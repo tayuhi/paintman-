@@ -34,7 +34,7 @@ var res = {
     iroyukaao : "res/色のついた床(青).png",
     kakeru : "res/アスタリスク.png",
     suuji3 : "res/数字の3.png",
-    STAGE1 : "res/stage1.png",
+    STAGE1 : "res/STAGE1.png",
     SCORE : "res/SCORE.png",
     suuji0 : "res/0.png"
 
