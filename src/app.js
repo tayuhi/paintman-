@@ -7,11 +7,11 @@ var map;
 
 var level = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+    [1, 0, 0, 0, 0, 2, 0, 2, 0, 2, 0, 0, 1, 1],
     [1, 0, 1, 1, 2, 1, 0, 1, 1, 1, 1, 0, 1, 1],
-    [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+    [1, 0, 0, 0, 1, 0, 2, 0, 2, 0, 2, 0, 1, 1],
     [1, 0, 1, 1, 2, 1, 0, 1, 1, 1, 1, 0, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+    [1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1],
     [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1],
     [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1],
     [1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1],
@@ -68,10 +68,10 @@ var gameLayer = cc.Layer.extend({
 
 
 
-        var levelSprite3 = cc.Sprite.create(res.kinoback);
+        /*var levelSprite3 = cc.Sprite.create(res.kinoback);
         levelSprite3.setPosition(240, 875);
         levelSprite3.setScale(4, 2.85);
-        this.addChild(levelSprite3);
+        this.addChild(levelSprite3);*/
         var levelSprite2 = cc.Sprite.create(res.backsiro);
         levelSprite2.setPosition(80, 730);
         levelSprite2.setScale(4.4, 2.2);
@@ -95,6 +95,38 @@ var gameLayer = cc.Layer.extend({
         sprite6.setPosition(610, 125);
         sprite6.setScale(0.3);
         this.addChild(sprite6, 0);
+
+        var sprite7 = cc.Sprite.create(res.kakeru);
+        sprite7.setPosition(175, 1350);
+        sprite7.setScale(1);
+        this.addChild(sprite7, 0);
+
+        var sprite8 = cc.Sprite.create(res.paintmansiro1);
+        sprite8.setPosition(100, 1350);
+        sprite8.setScale(0.3);
+        this.addChild(sprite8, 0);
+
+        var sprite9 = cc.Sprite.create(res.suuji3);
+        sprite9.setPosition(245, 1350);
+        sprite9.setScale(1);
+        this.addChild(sprite9, 0);
+
+        var sprite10 = cc.Sprite.create(res.STAGE1);
+        sprite10.setPosition(700, 1350);
+        sprite10.setScale(1);
+        this.addChild(sprite10, 0);
+
+        var sprite11 = cc.Sprite.create(res.SCORE);
+        sprite11.setPosition(200, 1250);
+        sprite11.setScale(1);
+        this.addChild(sprite11, 0);
+
+        var sprite12 = cc.Sprite.create(res.suuji0);
+        sprite12.setPosition(445, 1250);
+        sprite12.setScale(1);
+        this.addChild(sprite12, 0);
+
+
 
         for (i = 0; i < 12; i++) {　　　　　　
             cratesArray[i] = [];　 //配列オブジェクトの生成
@@ -126,6 +158,14 @@ var gameLayer = cc.Layer.extend({
 
                         break;
                     case 4:
+
+                        var spriteiroyuka = cc.Sprite.create(res.iroyukaao);
+                        spriteiroyuka.setPosition(408, 393);
+                        spriteiroyuka.setScale(0.19);
+                        this.addChild(spriteiroyuka, 0);
+                        cratesArray[i][j] = null;
+
+
                     case 6:
                         playerSprite = cc.Sprite.create(res.paintmansiro1);
                         playerSprite.setPosition(40 + 75 * j, 1140 - 75 * i);
@@ -154,6 +194,13 @@ var gameLayer = cc.Layer.extend({
                 }
             }
         }
+        var spriteteki = cc.Sprite.create(res.tekimannakaao);
+        spriteteki.setPosition(105, 400);
+        spriteteki.setScale(3);
+        this.addChild(spriteteki, 0);
+
+
+
 
 
         cc.eventManager.addListener(listener, this);
@@ -287,7 +334,7 @@ function move(deltaX, deltaY) {
             }
             break;
     }
-  
+
 }
 
 
@@ -309,12 +356,13 @@ function hidariniiku() {
 }
 
 function ueniiku() {
-  move(0, -1);
+    move(0, -1);
 }
 
 function miginiiku() {
-  move(1, 0);
+    move(1, 0);
 }
+
 function sitaniiku() {
-  move(0,1)
+    move(0, 1)
 }

@@ -22,7 +22,15 @@ var yonLayer = cc.Layer.extend({
         sprite2nd.setScale(2.5);
         this.addChild(sprite2nd, 0);
 
+        var sprite11 = cc.Sprite.create(res.SCORE);
+        sprite11.setPosition(200, 1250);
+        sprite11.setScale(1);
+        this.addChild(sprite11, 0);
 
+        var sprite12 = cc.Sprite.create(res.suuji0);
+        sprite12.setPosition(445, 1250);
+        sprite12.setScale(1);
+        this.addChild(sprite12, 0);
 
 
 
@@ -35,7 +43,7 @@ var yonLayer = cc.Layer.extend({
         sprite.setScale(0.8);
         this.addChild(sprite, 0);
 */
-    /*    var label = cc.LabelTTF.create("倉庫番", "Arial", 76);
+        /*    var label = cc.LabelTTF.create("倉庫番", "Arial", 76);
 
         label.setPosition(size.width / 2, size.height * 1 / 6);
         this.addChild(label, 1);
@@ -60,12 +68,12 @@ var yonLayer = cc.Layer.extend({
     },
     onTouchMoved: function(touch, event) {},
     onTouchEnded: function(touch, event) {
-        cc.director.runScene(new gameScene());
+        cc.director.runScene(new FirstScene());
 
         //bgmの再生をとめる
         if (audioEngine.isMusicPlaying()) {
             audioEngine.stopMusic();
-audioEngine.playEffect(res.warai);
+            audioEngine.playEffect(res.warai);
         }
 
     },

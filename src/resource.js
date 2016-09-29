@@ -30,7 +30,13 @@ var res = {
     kinoback : "res/木背景.png",
     clear : "res/stageclear.png",
     tekimannakaao : "res/敵真ん中(青).png",
-    GAMEOVER : "res/GAMEOVER.png"
+    GAMEOVER : "res/GAMEOVER.png",
+    iroyukaao : "res/色のついた床(青).png",
+    kakeru : "res/アスタリスク.png",
+    suuji3 : "res/数字の3.png",
+    STAGE1 : "res/stage1.png",
+    SCORE : "res/SCORE.png",
+    suuji0 : "res/0.png"
 
 
 
