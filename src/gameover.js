@@ -18,7 +18,7 @@ var yonLayer = cc.Layer.extend({
         var sprite2nd = cc.Sprite.create(res.GAMEOVER);
         /*sprite.setPosition(size.width / 1.5, size.height / 2);
         sprite.setScale(10, 5);*/
-        sprite2nd.setPosition(size.width / 1.7, size.height / 2.8);
+        sprite2nd.setPosition(size.width / 2, size.height / 2);
         sprite2nd.setScale(2.5);
         this.addChild(sprite2nd, 0);
 

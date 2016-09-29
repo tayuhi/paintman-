@@ -36,7 +36,8 @@ var res = {
     suuji3 : "res/数字の3.png",
     STAGE1 : "res/STAGE1.png",
     SCORE : "res/SCORE.png",
-    suuji0 : "res/0.png"
+    suuji0 : "res/0.png",
+    GO : "res/GO.png"
 
 
 

@@ -6,18 +6,18 @@ var level;
 var map;
 
 var level = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 2, 0, 2, 0, 2, 0, 0, 1, 1],
-    [1, 0, 1, 1, 2, 1, 0, 1, 1, 1, 1, 0, 1, 1],
-    [1, 0, 0, 0, 1, 0, 2, 0, 2, 0, 2, 0, 1, 1],
-    [1, 0, 1, 1, 2, 1, 0, 1, 1, 1, 1, 0, 1, 1],
-    [1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1],
-    [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1],
-    [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1],
-    [1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1],
-    [1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 1, 8, 1, 4, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
 
@@ -33,7 +33,7 @@ var endTouch;
 var swipeTolerance = 10; //スワイプかを判断する閾値
 var audioEngine;
 var flag = 0;
-
+var pickedTiles = [];
 
 var gameScene = cc.Scene.extend({
     onEnter: function() {
@@ -135,7 +135,7 @@ var gameLayer = cc.Layer.extend({
                 switch (level[i][j]) {
                     case 0:
                         var spriteyuka = cc.Sprite.create(res.yuka);
-                        spriteyuka.setPosition(40 + 75 * j, 1140 - 75 * i);
+                        spriteyuka.setPosition(30 + 75 * j, 1140 - 75 * i);
                         spriteyuka.setScale(0.21);
                         this.addChild(spriteyuka, 0);
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
@@ -143,15 +143,16 @@ var gameLayer = cc.Layer.extend({
                         break;
                     case 1:
                         var spritekabe = cc.Sprite.create(res.kabeblock);
-                        spritekabe.setPosition(40 + 75 * j, 1140 - 75 * i);
+                        spritekabe.setPosition(30 + 75 * j, 1140 - 75 * i);
                         spritekabe.setScale(0.19);
                         this.addChild(spritekabe, 0);
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
 
                         break;
+
                     case 2:
                         var spritedot = cc.Sprite.create(res.dot);
-                        spritedot.setPosition(40 + 75 * j, 1140 - 75 * i);
+                        spritedot.setPosition(30 + 75 * j, 1140 - 75 * i);
                         spritedot.setScale(0.15);
                         this.addChild(spritedot, 0);
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
@@ -159,16 +160,9 @@ var gameLayer = cc.Layer.extend({
                         break;
                     case 4:
 
-                        var spriteiroyuka = cc.Sprite.create(res.iroyukaao);
-                        spriteiroyuka.setPosition(408, 393);
-                        spriteiroyuka.setScale(0.19);
-                        this.addChild(spriteiroyuka, 0);
-                        cratesArray[i][j] = null;
-
-
                     case 6:
                         playerSprite = cc.Sprite.create(res.paintmansiro1);
-                        playerSprite.setPosition(40 + 75 * j, 1140 - 75 * i);
+                        playerSprite.setPosition(30 + 75 * j, 1140 - 75 * i);
                         playerSprite.setScale(0.3);
                         this.addChild(playerSprite);
                         playerPosition = {
@@ -187,6 +181,31 @@ var gameLayer = cc.Layer.extend({
                         cratesArray[i][j] = crateSprite; //(i,j)の位置にcrateSpriteを入れる
 
                         break;
+                    case 7:
+                        var spriteteki = cc.Sprite.create(res.tekimannakaao);
+                        spriteteki.setPosition(30 + 75 * j, 1140 - 75 * i);
+                        spriteteki.setScale(0.3);
+                        this.addChild(spriteteki, 0);
+                        cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
+
+                        break;
+                    case 8:
+                        var spriteiroyukaao = cc.Sprite.create(res.iroyukaao);
+                        spriteiroyukaao.setPosition(30 + 75 * j, 1140 - 75 * i);
+                        spriteiroyukaao.setScale(0.19, 0.18);
+                        this.addChild(spriteiroyukaao, 0);
+                        cratesArray[i][j] = null;
+
+                        break;
+                    case 9:
+                        var spriteyukaaka = cc.Sprite.create(res.iroyukaao);
+                        spriteyukaka.setPosition(30 + 75 * j, 1140 - 75 * i);
+                        spriteyukaka.setScale(3);
+                        this.addChild(spriteyukaaka, 0);
+                        cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
+
+                        break;
+
                     default:
                         cratesArray[i][j] = null; //木箱のコード以外の場合は、その場所に木箱がない値としてnullを代入する
 
@@ -194,12 +213,14 @@ var gameLayer = cc.Layer.extend({
                 }
             }
         }
-        var spriteteki = cc.Sprite.create(res.tekimannakaao);
-        spriteteki.setPosition(105, 400);
-        spriteteki.setScale(3);
-        this.addChild(spriteteki, 0);
 
 
+        var spriteGO = cc.Sprite.create(res.GO);
+        //auto spriteGO = Sprite::create(res.GO);
+        spriteGO.setPosition(500, 700);
+        spriteGO.setScale(2);
+        this.addChild(spriteGO, 0);
+        //spriteGO->setVisible(false);
 
 
 
@@ -246,6 +267,13 @@ var gameLayer = cc.Layer.extend({
                 if (keyCode == 40) sitaniiku(); // 下に行くよ
             }
         }, this);
+        cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
+            onKeyPressed: function(keyCode, event) {
+
+                if (keyCode == 16) gokesi(); // shiftでgo消し
+            }
+        }, this);
     },
 });
 
@@ -262,7 +290,32 @@ var listener = cc.EventListener.create({
         swipeDirection();
     }
 });
-
+var MemoryTile = cc.Sprite.extend({
+    ctor: function() {
+        this._super();
+        this.initWithFile(res.ue);
+        cc.eventManager.addListener(listener.clone(), this);
+    }
+});
+var listener2 = cc.EventListener.create({
+    event: cc.EventListener.TOUCH_ONE_BY_ONE,
+    swallowTouches: true,
+    onTouchBegan: function(touch, event) {
+        if (pickedTiles.length < 2) {
+            var target = event.getCurrentTarget();
+            var location = target.convertToNodeSpace(touch.getLocation());
+            var targetSize = target.getContentSize();
+            var targetRectangle = cc.rect(0, 0, targetSize.width, targetSize.height);
+            if (cc.rectContainsPoint(targetRectangle, location)) {
+                target.initWithFile("res/矢印前.png");
+                pickedTiles.push(target);
+                if (pickedTiles.length == 2) {
+                    ueniiku();
+                }
+            }
+        }
+    }
+});
 //スワイプ方向を検出する処理
 function swipeDirection() {
     var distX = endTouch.x - startTouch.x;
@@ -295,7 +348,7 @@ function move(deltaX, deltaY) {
             playerPosition.x += deltaX;
             playerPosition.y += deltaY;
             level[playerPosition.y][playerPosition.x] += 4;
-            playerSprite.setPosition(40 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
+            playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
             break;
         case 3:
         case 5:
@@ -306,7 +359,7 @@ function move(deltaX, deltaY) {
                 playerPosition.x += deltaX;
                 playerPosition.y += deltaY;
                 level[playerPosition.y][playerPosition.x] += 1;
-                playerSprite.setPosition(40 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
+                playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
                 level[playerPosition.y + deltaY][playerPosition.x + deltaX] += 3;
                 //落ちた木箱
                 if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 5) {
@@ -365,4 +418,8 @@ function miginiiku() {
 
 function sitaniiku() {
     move(0, 1)
+}
+
+function gokesi() {
+
 }
