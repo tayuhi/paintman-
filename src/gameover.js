@@ -11,7 +11,7 @@ var yonLayer = cc.Layer.extend({
         audioEngine = cc.audioEngine;
         if (!audioEngine.isMusicPlaying()) {
             //audioEngine.playMusic("res/bgm_main.mp3", true);
-            audioEngine.playMusic(res.soup, true);
+            //audioEngine.playMusic(res.soup, true);
         }
 
         //画像

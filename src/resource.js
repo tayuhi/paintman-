@@ -20,6 +20,7 @@ var res = {
     kabeblock : "res/壁ブロック1.png",
     paintmansiro1 : "res/paintmansiro1.png",
     paintmansiro2 : "res/paintmansiro2.png",
+    paintmanaka1 : "res/paintmanaka1.png",
     hidari : "res/矢印左.png",
     migi : "res/矢印右.png",
     ue : "res/矢印前.png",
@@ -32,12 +33,19 @@ var res = {
     tekimannakaao : "res/敵真ん中(青).png",
     GAMEOVER : "res/GAMEOVER.png",
     iroyukaao : "res/色のついた床(青).png",
+    iroyukaki : "res/色のついた床(黄).png",
+    iroyukaaka : "res/色のついた床(赤).png",
+    iroyukamidori : "res/色のついた床(緑).png",
+    iroyukamurasaki : "res/色のついた床(紫).png",
     kakeru : "res/アスタリスク.png",
     suuji3 : "res/数字の3.png",
     STAGE1 : "res/STAGE1.png",
+    stage2 : "res/stage2.png",
+    stage3 : "res/stage3.png",
     SCORE : "res/SCORE.png",
     suuji0 : "res/0.png",
-    GO : "res/GO.png"
+    GO : "res/GO.png",
+    stage4 : "res/stage4.png",
 
 
 

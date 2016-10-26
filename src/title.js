@@ -28,6 +28,7 @@ var ThirdLayer = cc.Layer.extend({
         this.addChild(sprite2, 0);
 
 
+
         var playtenmetu = cc.Blink.create(3000,2000);
 
          sprite2.runAction(cc.Sequence.create(playtenmetu));
@@ -65,12 +66,12 @@ var ThirdLayer = cc.Layer.extend({
     },
     onTouchMoved: function(touch, event) {},
     onTouchEnded: function(touch, event) {
-        cc.director.runScene(new gameScene());
+        cc.director.runScene(new gameScene1());
 
         //bgmの再生をとめる
         if (audioEngine.isMusicPlaying()) {
             audioEngine.stopMusic();
-audioEngine.playEffect(res.warai);
+//audioEngine.playEffect(res.warai);
         }
 
     },

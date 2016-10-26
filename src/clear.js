@@ -1,7 +1,7 @@
 var stage_num = 0;
 
 var ResultLayer = cc.Layer.extend({
-  sprite: null,
+    sprite: null,
     ctor: function() {
         this._super();
         var size = cc.director.getWinSize();
@@ -19,10 +19,10 @@ var ResultLayer = cc.Layer.extend({
 
 
 
-                if (!audioEngine.isMusicPlaying()) {
-                    //audioEngine.playMusic("res/bgm_main.mp3", true);
-                    audioEngine.playMusic(res.bgm_title, true);
-                }
+        if (!audioEngine.isMusicPlaying()) {
+            //audioEngine.playMusic("res/bgm_main.mp3", true);
+            //  audioEngine.playMusic(res.bgm_title, true);
+        }
 
         // タップイベントリスナーを登録する
         cc.eventManager.addListener({
@@ -41,8 +41,8 @@ var ResultLayer = cc.Layer.extend({
 
     onTouchMoved: function(touch, event) {},
     onTouchEnded: function(touch, event) {
-      stage_num++;
-        cc.director.runScene(new gameScene());
+        //stage_num++;
+        cc.director.runScene(new gameScene1());
 
         //bgmの再生をとめる
         if (audioEngine.isMusicPlaying()) {
