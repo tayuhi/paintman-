@@ -24,6 +24,9 @@ var level = [
 var miss = 0;
 var missText;
 
+var miss2 = 3;
+var missText2;
+
 //kokoko = level[];
 var playerPosition; //マップ内のプレイやの位置(ｘ、ｙ)を保持する
 var enemyPosition;
@@ -55,10 +58,14 @@ var gameScene1 = cc.Scene.extend({
             //audioEngine.playMusic("res/bgm_main.mp3", true);
             //  audioEngine.playMusic(res.bgm_main, true);
         }
-        //ミスした回数
-        missText = cc.LabelTTF.create("Miss: 0", "Arial", "32", cc.TEXT_ALIGNMENT_CENTER);
+        //dotした回数
+        missText = cc.LabelTTF.create("SCORE: 0", "Arial", "32", cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(missText);
         missText.setPosition(300, 50);
+        //dotした回数
+        missText2 = cc.LabelTTF.create("残機: 3", "Arial", "32", cc.TEXT_ALIGNMENT_CENTER);
+        this.addChild(missText2);
+        missText2.setPosition(100, 50);
     }
 });
 
@@ -547,11 +554,17 @@ function move(deltaX, deltaY) {
         case 0:
 
             if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 9) {
+              playerSprite.iroflag = true;
                 playerSprite.iroflagaka = true;
             }
             if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 7) {
                 deltaX += 1;
+                miss2--;
+                missText2.setString("残機: " + miss2);
+                if(miss2 == 0){
+                  miss2 = 3;
                 cc.director.runScene(new overScene());
+              }
             }
 
 
@@ -613,11 +626,14 @@ function move(deltaX, deltaY) {
                 dotArray[playerPosition.y + deltaY][playerPosition.x + deltaX] = movingdot;
                 dotArray[playerPosition.y][playerPosition.x] = null;
                 miss++
-                missText.setString("dot: " + miss);
+                missText.setString("SCORE: " + miss);
+                deltaY = -1;
                 //deltaX += 5;
 
-                playerSprite.iroflag = true;
+
                 if (miss == 5) {
+
+                  miss = 0;
                     cc.director.runScene(new ResultScene());
                 }
                 break;
