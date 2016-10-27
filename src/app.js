@@ -8,15 +8,15 @@ var map;
 var level = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4, 1],
-    [1, 0, 1, 0, 0, 0, 1, 7, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 0, 0, 1, 7, 0, 0, 1, 0, 1],
     [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1],
     [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1],
     [1, 0, 0, 0, 1, 2, 0, 2, 1, 0, 0, 0, 1],
     [1, 0, 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1],
     [1, 0, 0, 0, 1, 2, 0, 2, 1, 0, 0, 0, 1],
-    [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+    [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1],
     [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1],
-    [1, 0, 1, 0, 0, 10, 0, 9, 0, 8, 1, 0, 1],
+    [1, 12, 0, 11, 0, 10, 0, 9, 0, 8, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
@@ -33,7 +33,9 @@ var enemyPosition;
 var playerSprite; //プレイヤーのスプライト
 var cratesArray = []; //配置した木箱のスプライトを配列に保持する
 var dotArray = [];
+var tekiArray = [];
 var spritedot;
+var spriteteki;
 
 var startTouch;
 var endTouch;
@@ -62,10 +64,12 @@ var gameScene1 = cc.Scene.extend({
         missText = cc.LabelTTF.create("SCORE: 0", "Arial", "32", cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(missText);
         missText.setPosition(300, 50);
-        //dotした回数
+        missText.setScale(1.5);
+        //残機した回数
         missText2 = cc.LabelTTF.create("残機: 3", "Arial", "32", cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(missText2);
         missText2.setPosition(100, 50);
+        missText2.setScale(1.5);
     }
 });
 
@@ -175,6 +179,7 @@ var gameLayer = cc.Layer.extend({
         for (i = 0; i < 12; i++) {　　　　　　
             cratesArray[i] = [];　 //配列オブジェクトの生成
             dotArray[i] = [];
+            tekiArray[i] = [];
             for (j = 0; j < 15; j++) {
                 switch (level[i][j]) {
                     case 0:
@@ -184,6 +189,7 @@ var gameLayer = cc.Layer.extend({
                         this.addChild(spriteyuka, 0);
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
                         dotArray[i][j] = null;
+                        tekiArray[i][j] = null;
                         break;
                     case 1:
                         var spritekabe = cc.Sprite.create(res.kabeblock);
@@ -192,6 +198,7 @@ var gameLayer = cc.Layer.extend({
                         this.addChild(spritekabe, 0);
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
                         dotArray[i][j] = null;
+                        tekiArray[i][j] = null;
                         break;
 
                     case 2:
@@ -199,8 +206,9 @@ var gameLayer = cc.Layer.extend({
                         spritedot.setPosition(30 + 75 * j, 1140 - 75 * i);
                         spritedot.setScale(0.15);
                         this.addChild(spritedot, 0);
-                        cratesArray[i][j] = spritedot;　 //playerがいるので、その場所には木箱はないのでnullを代入する
+                        cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
                         dotArray[i][j] = spritedot;
+                        tekiArray[i][j] = null;
                         break;
                     case 4:
 
@@ -209,12 +217,25 @@ var gameLayer = cc.Layer.extend({
                         playerSprite.setPosition(30 + 75 * j, 1140 - 75 * i);
                         playerSprite.setScale(0.3);
                         this.addChild(playerSprite, 1);
+                        playerSprite.tekisyoutotu = 0;
                         playerSprite.workingFlag = false;
                         playerSprite.workingFlag2 = false;
+                        playerSprite.workingFlag3 = false;
+                        playerSprite.workingFlag4 = false;
+                        playerSprite.workingFlag5 = false;
+                        playerSprite.workingFlag6 = false;
                         playerSprite.iroflag = false;
                         playerSprite.iroflagaka = false;
+                        playerSprite.iroflagao = false;
+                        playerSprite.iroflagki = false;
+                        playerSprite.iroflagmidori = false;
+                        playerSprite.iroflagmurasaki = false;
                         playerSprite.schedule(this.working, 0.5);
                         playerSprite.schedule(this.working2, 0.5);
+                        playerSprite.schedule(this.working3, 0.5);
+                        playerSprite.schedule(this.working4, 0.5);
+                        playerSprite.schedule(this.working5, 0.5);
+                        playerSprite.schedule(this.working6, 0.5);
 
 
                         playerPosition = {
@@ -223,6 +244,7 @@ var gameLayer = cc.Layer.extend({
                         };　　　　　　　　　　　　
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
                         dotArray[i][j] = null;
+                        tekiArray[i][j] = null;
                         break;
 
                     case 3:
@@ -233,11 +255,14 @@ var gameLayer = cc.Layer.extend({
                         this.addChild(crateSprite);
                         cratesArray[i][j] = crateSprite; //(i,j)の位置にcrateSpriteを入れる
                         dotArray[i][j] = null;
+                        tekiArray[i][j] = null;
                         break;
                     case 7:
-                        var spriteteki = cc.Sprite.create(res.tekimannakaao);
+                        spriteteki = cc.Sprite.create(res.tekimannakaao);
                         spriteteki.setPosition(30 + 75 * j, 1140 - 75 * i);
                         spriteteki.setScale(0.3);
+                        spriteteki.workingFlagteki = false;
+                        spriteteki.schedule(this.workingteki, 0.5);
                         this.addChild(spriteteki, 1);
                         /*var moveAction = cc.MoveTo.create(10.5, new cc.Point(550, 0));
                         spriteteki.runAction(moveAction);*/
@@ -246,7 +271,7 @@ var gameLayer = cc.Layer.extend({
                             y: i
                         };　　
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
-
+                        tekiArray[i][j] = spriteteki;
                         break;
                     case 8:
                         var spriteiroyukaao = cc.Sprite.create(res.iroyukaao);
@@ -263,6 +288,7 @@ var gameLayer = cc.Layer.extend({
                         this.addChild(spriteyukaaka, 0);
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
                         dotArray[i][j] = null;
+                        tekiArray[i][j] = null;
                         break;
                     case 10:
                         var spriteyukaki = cc.Sprite.create(res.iroyukaki);
@@ -271,6 +297,7 @@ var gameLayer = cc.Layer.extend({
                         this.addChild(spriteyukaki, 0);
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
                         dotArray[i][j] = null;
+                        tekiArray[i][j] = null;
                         break;
                     case 11:
                         var spriteyukamidori = cc.Sprite.create(res.iroyukamidori);
@@ -279,6 +306,7 @@ var gameLayer = cc.Layer.extend({
                         this.addChild(spriteyukamidori, 0);
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
                         dotArray[i][j] = null;
+                        tekiArray[i][j] = null;
                         break;
                     case 12:
                         var spriteyukamurasaki = cc.Sprite.create(res.iroyukamurasaki);
@@ -287,10 +315,12 @@ var gameLayer = cc.Layer.extend({
                         this.addChild(spriteyukamurasaki, 0);
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
                         dotArray[i][j] = null;
+                        tekiArray[i][j] = null;
                         break;
                     default:
                         cratesArray[i][j] = null; //木箱のコード以外の場合は、その場所に木箱がない値としてnullを代入する
                         dotArray[i][j] = null;
+                        tekiArray[i][j] = null;
                         break;
 
 
@@ -401,9 +431,63 @@ var gameLayer = cc.Layer.extend({
             playerSprite.setScale(2.3);
 
 
-        }
-    }
 
+        }
+    },
+    working3: function(event) {
+        if (playerSprite.iroflagao == true) {
+
+            playerSprite.workingFlag3 = (playerSprite.workingFlag3 == true) ? false : true;
+            if (playerSprite.workingFlag3) playerSprite.initWithFile(res.paintmanao1);
+            else playerSprite.initWithFile(res.paintmanao2);
+            playerSprite.setScale(2.3);
+
+
+
+        }
+    },
+    working4: function(event) {
+        if (playerSprite.iroflagki == true) {
+
+            playerSprite.workingFlag4 = (playerSprite.workingFlag4 == true) ? false : true;
+            if (playerSprite.workingFlag4) playerSprite.initWithFile(res.paintmanki1);
+            else playerSprite.initWithFile(res.paintmanki2);
+            playerSprite.setScale(2.3);
+
+
+
+        }
+    },
+    working5: function(event) {
+        if (playerSprite.iroflagmidori == true) {
+
+            playerSprite.workingFlag5 = (playerSprite.workingFlag5 == true) ? false : true;
+            if (playerSprite.workingFlag5) playerSprite.initWithFile(res.paintmanmidori1);
+            else playerSprite.initWithFile(res.paintmanmidori2);
+            playerSprite.setScale(2.3);
+
+
+
+        }
+    },
+    working6: function(event) {
+        if (playerSprite.iroflagmurasaki == true) {
+
+            playerSprite.workingFlag6 = (playerSprite.workingFlag6 == true) ? false : true;
+            if (playerSprite.workingFlag6) playerSprite.initWithFile(res.paintmanmurasaki1);
+            else playerSprite.initWithFile(res.paintmanmurasaki2);
+            playerSprite.setScale(2.3);
+        }
+    },
+  /*  workingteki: function(event) {
+
+            spriteteki.workingFlagteki = (spriteteki.workingFlagteki == true) ? false : true;
+            if (spriteteki.workingFlagteki) spriteteki.initWithFile(res.paintmanmurasaki1);
+            else spriteteki.initWithFile(res.paintmanmurasaki2);
+            spriteteki.setScale(2.3);
+
+    }
+*/
 });
 
 
@@ -546,26 +630,58 @@ function move(deltaX, deltaY) {
 
 
     switch (level[playerPosition.y + deltaY][playerPosition.x + deltaX]) {
-
-        case 7:
+        case 12:
+        case 11:
         case 8:
         case 9:
         case 10:
         case 0:
-
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 12) {
+                playerSprite.iroflag = true;
+                playerSprite.iroflagaka = false;
+                playerSprite.iroflagao = false;
+                playerSprite.iroflagki = false;
+                playerSprite.iroflagmidori = false;
+                playerSprite.iroflagmurasaki = true;
+                playerSprite.tekisyoutotu = 0;
+            }
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 11) {
+                playerSprite.iroflag = true;
+                playerSprite.iroflagaka = false;
+                playerSprite.iroflagao = false;
+                playerSprite.iroflagki = false;
+                playerSprite.iroflagmidori = true;
+                playerSprite.iroflagmurasaki = false;
+                playerSprite.tekisyoutotu = 0;
+            }
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 10) {
+                playerSprite.iroflag = true;
+                playerSprite.iroflagaka = false;
+                playerSprite.iroflagao = false;
+                playerSprite.iroflagki = true;
+                playerSprite.iroflagmidori = false;
+                playerSprite.iroflagmurasaki = false;
+                playerSprite.tekisyoutotu = 0;
+            }
             if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 9) {
-              playerSprite.iroflag = true;
+                playerSprite.iroflag = true;
                 playerSprite.iroflagaka = true;
+                playerSprite.iroflagao = false;
+                playerSprite.iroflagki = false;
+                playerSprite.iroflagmidori = false;
+                playerSprite.iroflagmurasaki = false;
+                playerSprite.tekisyoutotu = 0;
             }
-            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 7) {
-                deltaX += 1;
-                miss2--;
-                missText2.setString("残機: " + miss2);
-                if(miss2 == 0){
-                  miss2 = 3;
-                cc.director.runScene(new overScene());
-              }
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 8) {
+                playerSprite.iroflag = true;
+                playerSprite.iroflagaka = false;
+                playerSprite.iroflagao = true;
+                playerSprite.iroflagki = false;
+                playerSprite.iroflagmidori = false;
+                playerSprite.iroflagmurasaki = false;
+                playerSprite.tekisyoutotu = 1;
             }
+
 
 
             level[playerPosition.y][playerPosition.x] -= 4;
@@ -622,21 +738,46 @@ function move(deltaX, deltaY) {
 
 
                 var movingdot = dotArray[playerPosition.y][playerPosition.x];
-                movingdot.setPosition(movingdot.getPosition().x + 1125 * deltaX, movingdot.getPosition().y - 1125 * deltaY);
+                movingdot.setPosition(movingdot.getPosition().x + 1825 * deltaX, movingdot.getPosition().y - 1825 * deltaY);
                 dotArray[playerPosition.y + deltaY][playerPosition.x + deltaX] = movingdot;
                 dotArray[playerPosition.y][playerPosition.x] = null;
                 miss++
                 missText.setString("SCORE: " + miss);
-                deltaY = -1;
+
                 //deltaX += 5;
 
 
                 if (miss == 5) {
 
-                  miss = 0;
+                    miss = 0;
                     cc.director.runScene(new ResultScene());
+                    //deltaY -= 1;
                 }
                 break;
+            }
+        case 7:
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 7) {
+                level[playerPosition.y][playerPosition.x] -= 4;
+                playerPosition.x += deltaX;
+                playerPosition.y += deltaY;
+                level[playerPosition.y][playerPosition.x] += 4;
+                playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
+                if (playerSprite.tekisyoutotu == 1) {
+
+                    var movingteki = tekiArray[playerPosition.y][playerPosition.x];
+                    movingteki.setPosition(movingteki.getPosition().x + 1125 * deltaX, movingteki.getPosition().y - 1125 * deltaY);
+                    tekiArray[playerPosition.y + deltaY][playerPosition.x + deltaX] = movingteki;
+                    tekiArray[playerPosition.y][playerPosition.x] = null;
+
+                } else {
+                    deltaX += 1;
+                    miss2--;
+                    missText2.setString("残機: " + miss2);
+                    if (miss2 == 0) {
+                        miss2 = 3;
+                        cc.director.runScene(new overScene());
+                    }
+                }
             }
     }
 
