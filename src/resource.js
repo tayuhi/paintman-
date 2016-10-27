@@ -21,6 +21,7 @@ var res = {
     paintmansiro1 : "res/paintmansiro1.png",
     paintmansiro2 : "res/paintmansiro2.png",
     paintmanaka1 : "res/paintmanaka1.png",
+    paintmanaka2 : "res/paintmanaka2.png",
     hidari : "res/矢印左.png",
     migi : "res/矢印右.png",
     ue : "res/矢印前.png",

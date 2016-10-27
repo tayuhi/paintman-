@@ -129,6 +129,8 @@ var gameLayer = cc.Layer.extend({
         sprite12.setScale(1);
         this.addChild(sprite12, 0);
 
+
+
         for (i = 0; i < 1; i++) {
             var tile = new MemoryTileue();
             this.addChild(tile, 0);
@@ -201,7 +203,11 @@ var gameLayer = cc.Layer.extend({
                         playerSprite.setScale(0.3);
                         this.addChild(playerSprite, 1);
                         playerSprite.workingFlag = false;
+                        playerSprite.workingFlag2 = false;
+                        playerSprite.iroflag = false;
+                        playerSprite.iroflagaka = false;
                         playerSprite.schedule(this.working, 0.5);
+                        playerSprite.schedule(this.working2, 0.5);
 
 
                         playerPosition = {
@@ -371,13 +377,25 @@ var gameLayer = cc.Layer.extend({
       },*/
 
     working: function(event) {
-        playerSprite.workingFlag = (playerSprite.workingFlag == true) ? false : true;
-        if (playerSprite.workingFlag) playerSprite.initWithFile(res.paintmansiro1);
-        else playerSprite.initWithFile(res.paintmansiro2);
+        if (playerSprite.iroflag == false) {
+            playerSprite.workingFlag = (playerSprite.workingFlag == true) ? false : true;
+            if (playerSprite.workingFlag) playerSprite.initWithFile(res.paintmansiro1);
+            else playerSprite.initWithFile(res.paintmansiro2);
+
+        }
+
+    },
+    working2: function(event) {
+        if (playerSprite.iroflagaka == true) {
+
+            playerSprite.workingFlag2 = (playerSprite.workingFlag2 == true) ? false : true;
+            if (playerSprite.workingFlag2) playerSprite.initWithFile(res.paintmanaka1);
+            else playerSprite.initWithFile(res.paintmanaka2);
+            playerSprite.setScale(2.3);
 
 
+        }
     }
-
 
 });
 
@@ -528,7 +546,9 @@ function move(deltaX, deltaY) {
         case 10:
         case 0:
 
-
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 9) {
+                playerSprite.iroflagaka = true;
+            }
             if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 7) {
                 deltaX += 1;
                 cc.director.runScene(new overScene());
@@ -596,6 +616,7 @@ function move(deltaX, deltaY) {
                 missText.setString("dot: " + miss);
                 //deltaX += 5;
 
+                playerSprite.iroflag = true;
                 if (miss == 5) {
                     cc.director.runScene(new ResultScene());
                 }
