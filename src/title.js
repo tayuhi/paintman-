@@ -18,9 +18,11 @@ var ThirdLayer = cc.Layer.extend({
         var sprite = cc.Sprite.create(res.title);
         /*sprite.setPosition(size.width / 1.5, size.height / 2);
         sprite.setScale(10, 5);*/
-        sprite.setPosition(size.width / 2, size.height / 1.4);
+        sprite.setPosition(size.width / 2, 1600);
         sprite.setScale(3,2.1);
         this.addChild(sprite, 0);
+        var moveAction = cc.MoveTo.create(5, new cc.Point(size.width / 2, size.height / 1.4));
+        sprite.runAction(moveAction);
 
         var sprite2 = cc.Sprite.create(res.titleplay);
         sprite2.setPosition(size.width / 1.7, size.height / 10);

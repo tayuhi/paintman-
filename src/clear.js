@@ -42,7 +42,7 @@ var ResultLayer = cc.Layer.extend({
     onTouchMoved: function(touch, event) {},
     onTouchEnded: function(touch, event) {
         //stage_num++;
-        cc.director.runScene(new gameScene1());
+        cc.director.runScene(new gameScene2());
 
         //bgmの再生をとめる
         if (audioEngine.isMusicPlaying()) {
