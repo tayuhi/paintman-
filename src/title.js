@@ -11,7 +11,7 @@ var ThirdLayer = cc.Layer.extend({
         audioEngine = cc.audioEngine;
         if (!audioEngine.isMusicPlaying()) {
             //audioEngine.playMusic("res/bgm_main.mp3", true);
-            audioEngine.playMusic(res.soup, true);
+            audioEngine.playMusic(res.paintmantitle, true);
         }
 
         //画像
@@ -68,13 +68,17 @@ var ThirdLayer = cc.Layer.extend({
     },
     onTouchMoved: function(touch, event) {},
     onTouchEnded: function(touch, event) {
+      audioEngine.playEffect(res.powerup02);
+var pause = setTimeout(function() {
         cc.director.runScene(new gameScene1());
+
 
         //bgmの再生をとめる
         if (audioEngine.isMusicPlaying()) {
             audioEngine.stopMusic();
 //audioEngine.playEffect(res.warai);
         }
+      }, 900);
 
     },
 });

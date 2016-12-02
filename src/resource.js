@@ -37,6 +37,10 @@ var res = {
     sita: "res/矢印後.png",
     yuka: "res/床.png",
     dot: "res/取るドット.png",
+    dot2: "res/取るドット2.png",
+    dot3: "res/取るドット3.png",
+    dot4: "res/取るドット4.png",
+    dot5: "res/取るドット5.png",
     backsiro: "res/白背景.png",
     kinoback: "res/木背景.png",
     clear: "res/stageclear.png",
@@ -52,9 +56,9 @@ var res = {
     tekimurasakimigi: "res/敵右手上げ(紫).png",
     tekimurasakihidari: "res/敵左手上げ(紫).png",
     tekimannakaaka: "res/敵真ん中(赤).png",
-    tekimannakaki:"res/敵真ん中(黄).png",
-    tekimannakamidori:"res/敵真ん中(緑).png",
-    tekimannakamurasaki:"res/敵真ん中(紫).png",
+    tekimannakaki: "res/敵真ん中(黄).png",
+    tekimannakamidori: "res/敵真ん中(緑).png",
+    tekimannakamurasaki: "res/敵真ん中(紫).png",
 
     GAMEOVER: "res/GAMEOVER.png",
     iroyukaao: "res/色のついた床(青).png",
@@ -71,7 +75,15 @@ var res = {
     suuji0: "res/0.png",
     GO: "res/GO.png",
     stage4: "res/stage4.png",
-
+    dotnooto: "res/poka02.mp3",
+    gamebgm: "res/gamebgm.mp3",
+    paintmantitle: "res/paintmantitle.mp3",
+    clearpaintman: "res/clearpaintman.mp3",
+    gameover: "res/gameover.mp3",
+    powerup02: "res/powerup02.mp3",
+    powerup08: "res/powerup08.mp3",
+    damage7: "res/damage7.mp3",
+    jump03: "res/jump03.mp3",
 
 
 };

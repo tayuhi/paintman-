@@ -1,5 +1,4 @@
-var stage_num = 0;
-
+var stagesusumu = 0;
 var ResultLayer = cc.Layer.extend({
     sprite: null,
     ctor: function() {
@@ -9,13 +8,16 @@ var ResultLayer = cc.Layer.extend({
         if (audioEngine.isMusicPlaying()) {
             audioEngine.stopMusic();
         }
-
+        stagesusumu++;
         var sprite = cc.Sprite.create(res.clear);
         sprite.setPosition(size.width / 2, size.height / 2);
         sprite.setScale(2.4);
         this.addChild(sprite, 0);
 
-
+        missText = cc.LabelTTF.create("SCORE "+miss, "PixelMplus10", "32", cc.TEXT_ALIGNMENT_CENTER);
+        this.addChild(missText);
+        missText.setPosition(250, 1250);
+        missText.setScale(3.5);
 
 
 
@@ -24,6 +26,7 @@ var ResultLayer = cc.Layer.extend({
             //  audioEngine.playMusic(res.bgm_title, true);
         }
 
+        audioEngine.playEffect(res.clearpaintman);
         // タップイベントリスナーを登録する
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -42,13 +45,25 @@ var ResultLayer = cc.Layer.extend({
     onTouchMoved: function(touch, event) {},
     onTouchEnded: function(touch, event) {
         //stage_num++;
-        cc.director.runScene(new gameScene2());
+        audioEngine.playEffect(res.powerup02);
+        var pause = setTimeout(function() {
 
+if(stagesusumu == 1){
+        cc.director.runScene(new gameScene2());
+}
+if(stagesusumu == 2){
+        cc.director.runScene(new gameScene3());
+}
+if(stagesusumu == 3){
+        cc.director.runScene(new gameScene());
+        stagesusumu = 0;
+}
         //bgmの再生をとめる
         if (audioEngine.isMusicPlaying()) {
             audioEngine.stopMusic();
-        }
 
+        }
+  }, 900);
     },
 });
 

@@ -6,14 +6,23 @@ var yonLayer = cc.Layer.extend({
     ctor: function() {
         this._super();
         var size = cc.director.getWinSize();
+        //bgmの再生をとめる
+        if (audioEngine.isMusicPlaying()) {
+            audioEngine.stopMusic();
 
+        }
         //音楽再生エンジン
         audioEngine = cc.audioEngine;
         if (!audioEngine.isMusicPlaying()) {
             //audioEngine.playMusic("res/bgm_main.mp3", true);
-            //audioEngine.playMusic(res.soup, true);
-        }
+            audioEngine.playMusic(res.gameover, true);
 
+        }
+        stagesusumu = 0;
+        missText = cc.LabelTTF.create("SCORE "+miss, "PixelMplus10", "32", cc.TEXT_ALIGNMENT_CENTER);
+        this.addChild(missText);
+        missText.setPosition(250, 1250);
+        missText.setScale(3.5);
         //画像
         var sprite2nd = cc.Sprite.create(res.GAMEOVER);
         /*sprite.setPosition(size.width / 1.5, size.height / 2);
@@ -21,16 +30,6 @@ var yonLayer = cc.Layer.extend({
         sprite2nd.setPosition(size.width / 2, size.height / 2);
         sprite2nd.setScale(2.5);
         this.addChild(sprite2nd, 0);
-
-        var sprite11 = cc.Sprite.create(res.SCORE);
-        sprite11.setPosition(200, 1250);
-        sprite11.setScale(1);
-        this.addChild(sprite11, 0);
-
-        var sprite12 = cc.Sprite.create(res.suuji0);
-        sprite12.setPosition(445, 1250);
-        sprite12.setScale(1);
-        this.addChild(sprite12, 0);
 
 
 
@@ -69,11 +68,11 @@ var yonLayer = cc.Layer.extend({
     onTouchMoved: function(touch, event) {},
     onTouchEnded: function(touch, event) {
         cc.director.runScene(new FirstScene());
-
+miss = 0;
         //bgmの再生をとめる
         if (audioEngine.isMusicPlaying()) {
             audioEngine.stopMusic();
-            audioEngine.playEffect(res.warai);
+
         }
 
     },

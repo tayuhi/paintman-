@@ -7,16 +7,16 @@ var map;
 
 var level = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 10, 1, 7, 13, 14, 15, 16, 1, 0, 0, 2, 1],
-    [1, 0, 8, 1, 1, 1, 1, 1, 0, 0, 0, 2, 1],
-    [1, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1],
-    [1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 2, 1],
-    [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2, 1],
-    [1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 2, 1],
-    [1, 11, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1],
-    [1, 9, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 1],
-    [1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1],
+    [1, 7, 1, 2, 1, 14, 1, 2, 1, 2, 1, 13, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1],
+    [1, 2, 2, 2, 2, 2, 10, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1],
+    [1, 2, 2, 9, 2, 2, 2, 2, 2, 8, 2, 2, 1],
+    [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1],
+    [1, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
@@ -62,6 +62,12 @@ var tekikabeflag3 = 0;
 var tekikabeflag4 = 0;
 var tekikabeflag5 = 0;
 var layer0;
+var dottota = 0;
+var aotaositaflag = false;
+var akataositaflag = false;
+var kitaositaflag = false;
+var midoritaositaflag = false;
+var murasakitaositaflag = false;
 
 
 var gameScene1 = cc.Scene.extend({
@@ -81,6 +87,7 @@ var gameScene1 = cc.Scene.extend({
         if (!audioEngine.isMusicPlaying()) {
             //audioEngine.playMusic("res/bgm_main.mp3", true);
             //  audioEngine.playMusic(res.bgm_main, true);
+            audioEngine.playMusic(res.gamebgm, true);
         }
         //dotした回数
         missText = cc.LabelTTF.create("SCORE 0", "PixelMplus10", "32", cc.TEXT_ALIGNMENT_CENTER);
@@ -240,6 +247,7 @@ var gameLayer = cc.Layer.extend({
                         spritedot.setPosition(30 + 75 * j, 1140 - 75 * i);
                         spritedot.setScale(0.15);
                         this.addChild(spritedot, 0);
+
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
                         dotArray[i][j] = spritedot;
                         tekiArray[i][j] = null;
@@ -370,7 +378,7 @@ var gameLayer = cc.Layer.extend({
                         tekiArray2[i][j] = null;
                         break;
                     case 13:
-                        spriteteki2 = cc.Sprite.create(res.tekimannakaao);
+                        spriteteki2 = cc.Sprite.create(res.tekimannakaaka);
                         spriteteki2.setPosition(30 + 75 * j, 1140 - 75 * i);
                         spriteteki2.setScale(0.3);
                         this.addChild(spriteteki2, 1);
@@ -668,6 +676,7 @@ var gameLayer = cc.Layer.extend({
         this.addChild(spriteteki);
     },
     removeteki: function(event) {
+        aotaositaflag = true;
         spriteteki.unschedule(this.workingteki);
         this.removeChild(spriteteki);
     },
@@ -751,6 +760,7 @@ var gameLayer = cc.Layer.extend({
         this.addChild(spriteteki2);
     },
     removeteki2: function(event) {
+        akataositaflag = true;
         spriteteki2.unschedule(this.workingteki2);
         this.removeChild(spriteteki2);
     },
@@ -825,6 +835,7 @@ var gameLayer = cc.Layer.extend({
         this.addChild(spriteteki3);
     },
     removeteki3: function(event) {
+        kitaositaflag = true;
         spriteteki3.unschedule(this.workingteki3);
         this.removeChild(spriteteki3);
     },
@@ -900,6 +911,7 @@ var gameLayer = cc.Layer.extend({
         this.addChild(spriteteki4);
     },
     removeteki4: function(event) {
+        midoritaositaflag = true;
         spriteteki4.unschedule(this.workingteki4);
         this.removeChild(spriteteki4);
     },
@@ -974,12 +986,14 @@ var gameLayer = cc.Layer.extend({
         this.addChild(spriteteki5);
     },
     removeteki5: function(event) {
+        murasakitaositaflag = true;
         spriteteki5.unschedule(this.workingteki5);
         this.removeChild(spriteteki5);
     },
-    removedot: function(event) {
+    removedot: function(dotsprite) {
 
-        this.removeChild(spritedot);
+        this.removeChild(dotsprite);
+
     },
 });
 
@@ -1124,10 +1138,136 @@ function move(deltaX, deltaY) {
 
     switch (level[playerPosition.y + deltaY][playerPosition.x + deltaX]) {
         case 7:
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 7) {
+                level[playerPosition.y][playerPosition.x] -= 4;
+                playerPosition.x += deltaX;
+                playerPosition.y += deltaY;
+
+                level[playerPosition.y][playerPosition.x] += 4;
+                playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
+                if (playerSprite.tekisyoutotu == 1 && aotaositaflag == false) {
+                    audioEngine.playEffect(res.jump03);
+                    layer0.removeteki(spriteteki);
+                    //level[enemyPosition.y][enemyPosition.x] = 0;
+
+                } else if (playerSprite.invulnerability == 0 && aotaositaflag == false) {
+                    playerSprite.invulnerability = 100;
+                    audioEngine.playEffect(res.damage7);
+
+                    miss2--;
+                    missText2.setString(" " + miss2);
+                    if (miss2 == 0) {
+                        miss2 = 3;
+                        cc.director.runScene(new overScene());
+                    }
+                }
+            }
+            break;
+
         case 16:
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 16) {
+                level[playerPosition.y][playerPosition.x] -= 4;
+                playerPosition.x += deltaX;
+                playerPosition.y += deltaY;
+
+                level[playerPosition.y][playerPosition.x] += 4;
+                playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
+                if (playerSprite.tekisyoutotu == 5 && murasakitaositaflag == false) {
+                    audioEngine.playEffect(res.jump03);
+                    layer0.removeteki5(spriteteki5);
+                    //level[enemyPosition.y][enemyPosition.x] = 0;
+
+                } else if (playerSprite.invulnerability == 0 && murasakitaositaflag == false) {
+                    playerSprite.invulnerability = 100;
+                    audioEngine.playEffect(res.damage7);
+
+                    miss2--;
+                    missText2.setString(" " + miss2);
+                    if (miss2 == 0) {
+                        miss2 = 3;
+                        cc.director.runScene(new overScene());
+                    }
+                }
+            }
+            break;
         case 15:
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 15) {
+                level[playerPosition.y][playerPosition.x] -= 4;
+                playerPosition.x += deltaX;
+                playerPosition.y += deltaY;
+
+                level[playerPosition.y][playerPosition.x] += 4;
+                playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
+                if (playerSprite.tekisyoutotu == 4 && midoritaositaflag == false) {
+                    audioEngine.playEffect(res.jump03);
+                    layer0.removeteki4(spriteteki4);
+                    //level[enemyPosition.y][enemyPosition.x] = 0;
+
+                } else if (playerSprite.invulnerability == 0 && midoritaositaflag == false) {
+                    playerSprite.invulnerability = 100;
+                    audioEngine.playEffect(res.damage7);
+
+                    miss2--;
+                    missText2.setString(" " + miss2);
+                    if (miss2 == 0) {
+                        miss2 = 3;
+                        cc.director.runScene(new overScene());
+                    }
+                }
+            }
+            break;
         case 14:
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 14) {
+                level[playerPosition.y][playerPosition.x] -= 4;
+                playerPosition.x += deltaX;
+                playerPosition.y += deltaY;
+
+                level[playerPosition.y][playerPosition.x] += 4;
+                playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
+                if (playerSprite.tekisyoutotu == 3 && kitaositaflag == false) {
+                    audioEngine.playEffect(res.jump03);
+                    layer0.removeteki3(spriteteki3);
+                    //level[enemyPosition.y][enemyPosition.x] = 0;
+
+                } else if (playerSprite.invulnerability == 0 && kitaositaflag == false) {
+                    playerSprite.invulnerability = 100;
+                    audioEngine.playEffect(res.damage7);
+
+                    miss2--;
+                    missText2.setString(" " + miss2);
+                    if (miss2 == 0) {
+                        miss2 = 3;
+                        cc.director.runScene(new overScene());
+                    }
+                }
+            }
+            break;
         case 13:
+            if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 13) {
+                level[playerPosition.y][playerPosition.x] -= 4;
+                playerPosition.x += deltaX;
+                playerPosition.y += deltaY;
+
+                level[playerPosition.y][playerPosition.x] += 4;
+                playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
+                if (playerSprite.tekisyoutotu == 2 && akataositaflag == false) {
+                    audioEngine.playEffect(res.jump03);
+                    layer0.removeteki2(spriteteki2);
+                    //level[enemyPosition.y][enemyPosition.x] = 0;
+
+                } else if (playerSprite.invulnerability == 0 && akataositaflag == false) {
+                    playerSprite.invulnerability = 100;
+                    audioEngine.playEffect(res.damage7);
+
+                    miss2--;
+                    missText2.setString(" " + miss2);
+                    if (miss2 == 0) {
+                        miss2 = 3;
+                        cc.director.runScene(new overScene());
+                    }
+                }
+            }
+            break;
         case 12:
         case 11:
         case 8:
@@ -1143,6 +1283,8 @@ function move(deltaX, deltaY) {
                 playerSprite.iroflagmidori = false;
                 playerSprite.iroflagmurasaki = true;
                 playerSprite.tekisyoutotu = 5;
+                audioEngine.playEffect(res.powerup08);
+
             }
             if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 11) {
                 playerSprite.iroflag = true;
@@ -1152,6 +1294,7 @@ function move(deltaX, deltaY) {
                 playerSprite.iroflagmidori = true;
                 playerSprite.iroflagmurasaki = false;
                 playerSprite.tekisyoutotu = 4;
+                audioEngine.playEffect(res.powerup08);
             }
             if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 10) {
                 playerSprite.iroflag = true;
@@ -1161,6 +1304,7 @@ function move(deltaX, deltaY) {
                 playerSprite.iroflagmidori = false;
                 playerSprite.iroflagmurasaki = false;
                 playerSprite.tekisyoutotu = 3;
+                audioEngine.playEffect(res.powerup08);
             }
             if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 9) {
                 playerSprite.iroflag = true;
@@ -1170,6 +1314,7 @@ function move(deltaX, deltaY) {
                 playerSprite.iroflagmidori = false;
                 playerSprite.iroflagmurasaki = false;
                 playerSprite.tekisyoutotu = 2;
+                audioEngine.playEffect(res.powerup08);
             }
             if (level[playerPosition.y + deltaY][playerPosition.x + deltaX] == 8) {
                 playerSprite.iroflag = true;
@@ -1179,6 +1324,9 @@ function move(deltaX, deltaY) {
                 playerSprite.iroflagmidori = false;
                 playerSprite.iroflagmurasaki = false;
                 playerSprite.tekisyoutotu = 1;
+
+                audioEngine.playEffect(res.powerup08);
+
             }
 
 
@@ -1245,20 +1393,33 @@ function move(deltaX, deltaY) {
                 dotArray[playerPosition.y + deltaY][playerPosition.x + deltaX] = movingdot;
                 dotArray[playerPosition.y][playerPosition.x] = null;*/
 
-//                level[playerPosition.y - deltaY][playerPosition.x - deltaX] = 0;
-                layer0.removedot(spritedot);
+                //                level[playerPosition.y - deltaY][playerPosition.x - deltaX] = 0;
+                //layer0.removedot(spritedot);
+
+                layer0.removedot(dotArray[playerPosition.y][playerPosition.x]);
+                //↓これで一度取ったドットを二度ととれんようにする
+                level[playerPosition.y][playerPosition.x] = 4;
                 miss++;
                 missText.setString("SCORE " + miss);
+                dottota++;
+                audioEngine.playEffect(res.dotnooto);
 
+                if (dottota == 80) {
+                    //miss = 0;
+                    cc.director.runScene(new ResultScene());
+                    //deltaY -= 1;
+                    dottota = 0;
+                    if (audioEngine.isMusicPlaying()) {
+                        audioEngine.stopMusic();
+                    }
+
+                }
                 //deltaX += 5;
 
 
-                if (miss == 10) {
+                //if (miss == 10) {
 
-                    miss = 0;
-                    cc.director.runScene(new ResultScene());
-                    //deltaY -= 1;
-                }
+
                 break;
             }
 
@@ -1351,6 +1512,7 @@ function tekimove(deltaX2, deltaY2) {
 */
                 } else if (playerSprite.invulnerability == 0) {
                     playerSprite.invulnerability = 100;
+                    audioEngine.playEffect(res.damage7);
                     deltaX2 += 1;
                     miss2--;
                     missText2.setString(" " + miss2);
@@ -1427,6 +1589,7 @@ function tekimove2(deltaX3, deltaY3) {
 */
                 } else if (playerSprite.invulnerability == 0) {
                     playerSprite.invulnerability = 100;
+                    audioEngine.playEffect(res.damage7);
                     miss2--;
                     missText2.setString(" " + miss2);
                     if (miss2 == 0) {
@@ -1498,6 +1661,7 @@ function tekimove3(deltaX4, deltaY4) {
 
                 } else if (playerSprite.invulnerability == 0) {
                     playerSprite.invulnerability = 100;
+                    audioEngine.playEffect(res.damage7);
                     miss2--;
                     missText2.setString(" " + miss2);
                     if (miss2 == 0) {
@@ -1568,6 +1732,7 @@ function tekimove4(deltaX5, deltaY5) {
 
                 } else if (playerSprite.invulnerability == 0) {
                     playerSprite.invulnerability = 100;
+                    audioEngine.playEffect(res.damage7);
                     miss2--;
                     missText2.setString(" " + miss2);
                     if (miss2 == 0) {
@@ -1638,6 +1803,7 @@ function tekimove5(deltaX6, deltaY6) {
 
                 } else if (playerSprite.invulnerability == 0) {
                     playerSprite.invulnerability = 100;
+                    audioEngine.playEffect(res.damage7);
                     miss2--;
                     missText2.setString(" " + miss2);
                     if (miss2 == 0) {
