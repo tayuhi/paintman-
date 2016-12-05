@@ -14,7 +14,7 @@ var ResultLayer = cc.Layer.extend({
         sprite.setScale(2.4);
         this.addChild(sprite, 0);
 
-        missText = cc.LabelTTF.create("SCORE "+miss, "PixelMplus10", "32", cc.TEXT_ALIGNMENT_CENTER);
+        missText = cc.LabelTTF.create("SCORE " + miss, "PixelMplus10", "32", cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(missText);
         missText.setPosition(250, 1250);
         missText.setScale(3.5);
@@ -48,22 +48,22 @@ var ResultLayer = cc.Layer.extend({
         audioEngine.playEffect(res.powerup02);
         var pause = setTimeout(function() {
 
-if(stagesusumu == 1){
-        cc.director.runScene(new gameScene2());
-}
-if(stagesusumu == 2){
-        cc.director.runScene(new gameScene3());
-}
-if(stagesusumu == 3){
-        cc.director.runScene(new gameScene());
-        stagesusumu = 0;
-}
-        //bgmの再生をとめる
-        if (audioEngine.isMusicPlaying()) {
-            audioEngine.stopMusic();
+            if (stagesusumu == 1) {
+                cc.director.runScene(new gameScene2());
+            }
+            if (stagesusumu == 2) {
+                cc.director.runScene(new gameScene3());
+            }
+            if (stagesusumu == 3) {
+                cc.director.runScene(new FirstScene());
+                stagesusumu = 0;
+            }
+            //bgmの再生をとめる
+            if (audioEngine.isMusicPlaying()) {
+                audioEngine.stopMusic();
 
-        }
-  }, 900);
+            }
+        }, 900);
     },
 });
 
