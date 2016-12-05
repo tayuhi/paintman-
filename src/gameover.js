@@ -19,7 +19,7 @@ var yonLayer = cc.Layer.extend({
 
         }
         stagesusumu = 0;
-        missText = cc.LabelTTF.create("SCORE "+miss, "PixelMplus10", "32", cc.TEXT_ALIGNMENT_CENTER);
+        missText = cc.LabelTTF.create("SCORE " + miss, "PixelMplus10", "32", cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(missText);
         missText.setPosition(250, 1250);
         missText.setScale(3.5);
@@ -30,9 +30,6 @@ var yonLayer = cc.Layer.extend({
         sprite2nd.setPosition(size.width / 2, size.height / 2);
         sprite2nd.setScale(2.5);
         this.addChild(sprite2nd, 0);
-
-
-
 
 
 
@@ -67,8 +64,13 @@ var yonLayer = cc.Layer.extend({
     },
     onTouchMoved: function(touch, event) {},
     onTouchEnded: function(touch, event) {
+      miss = 0;
+    //  var reset = overreset;
+    //  level = reset;
+
         cc.director.runScene(new FirstScene());
-miss = 0;
+
+
         //bgmの再生をとめる
         if (audioEngine.isMusicPlaying()) {
             audioEngine.stopMusic();

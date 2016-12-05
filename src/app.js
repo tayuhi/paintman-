@@ -2,10 +2,25 @@ var size;
 //var stageflag = 0;
 
 var level;
-
+var overreset;
 var map;
 
-var level = [
+ level = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 7, 1, 2, 1, 14, 1, 2, 1, 2, 1, 13, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1],
+    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1],
+    [1, 2, 2, 2, 2, 2, 10, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1],
+    [1, 2, 2, 9, 2, 2, 2, 2, 2, 8, 2, 2, 1],
+    [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1],
+    [1, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+];
+
+overreset = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 7, 1, 2, 1, 14, 1, 2, 1, 2, 1, 13, 1],
     [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
@@ -21,6 +36,7 @@ var level = [
 ];
 
 
+
 var miss = 0;
 var missText;
 
@@ -32,6 +48,8 @@ var playerPosition; //マップ内のプレイやの位置(ｘ、ｙ)を保持�
 var enemyPosition;
 var enemyPosition2;
 var enemyPosition3;
+var enemyPosition4;
+var enemyPosition5;
 var playerSprite; //プレイヤーのスプライト
 var spriteteki;
 var spriteteki2;
@@ -220,6 +238,9 @@ var gameLayer = cc.Layer.extend({
             tekiArray5[i] = [];
 
             for (j = 0; j < 15; j++) {
+              //↓この二行でステージ初期化
+              var reset = overreset[i][j];
+              level[i][j] = reset;
                 switch (level[i][j]) {
                     case 0:
                         var spriteyuka = cc.Sprite.create(res.yuka);
@@ -230,6 +251,9 @@ var gameLayer = cc.Layer.extend({
                         dotArray[i][j] = null;
                         tekiArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         break;
                     case 1:
                         var spritekabe = cc.Sprite.create(res.kabeblock);
@@ -240,6 +264,9 @@ var gameLayer = cc.Layer.extend({
                         dotArray[i][j] = null;
                         tekiArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         break;
 
                     case 2:
@@ -252,6 +279,9 @@ var gameLayer = cc.Layer.extend({
                         dotArray[i][j] = spritedot;
                         tekiArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         break;
                     case 4:
 
@@ -283,11 +313,6 @@ var gameLayer = cc.Layer.extend({
                         playerSprite.invulnerability = 0; //無敵モード時間　初期値0
                         this.scheduleUpdate();
 
-
-
-
-
-
                         playerPosition = {
                             x: j,
                             y: i
@@ -296,6 +321,9 @@ var gameLayer = cc.Layer.extend({
                         dotArray[i][j] = null;
                         tekiArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         break;
 
                     case 3:
@@ -308,6 +336,9 @@ var gameLayer = cc.Layer.extend({
                         dotArray[i][j] = null;
                         tekiArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         break;
                     case 7:
                         spriteteki = cc.Sprite.create(res.tekimannakaao);
@@ -327,6 +358,9 @@ var gameLayer = cc.Layer.extend({
                         tekiArray[i][j] = spriteteki;
                         dotArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         break;
                     case 8:
                         var spriteiroyukaao = cc.Sprite.create(res.iroyukaao);
@@ -335,6 +369,9 @@ var gameLayer = cc.Layer.extend({
                         this.addChild(spriteiroyukaao, 0);
                         cratesArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
 
                         break;
                     case 9:
@@ -346,6 +383,9 @@ var gameLayer = cc.Layer.extend({
                         dotArray[i][j] = null;
                         tekiArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         break;
                     case 10:
                         var spriteyukaki = cc.Sprite.create(res.iroyukaki);
@@ -356,6 +396,9 @@ var gameLayer = cc.Layer.extend({
                         dotArray[i][j] = null;
                         tekiArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         break;
                     case 11:
                         var spriteyukamidori = cc.Sprite.create(res.iroyukamidori);
@@ -366,6 +409,9 @@ var gameLayer = cc.Layer.extend({
                         dotArray[i][j] = null;
                         tekiArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         break;
                     case 12:
                         var spriteyukamurasaki = cc.Sprite.create(res.iroyukamurasaki);
@@ -376,6 +422,9 @@ var gameLayer = cc.Layer.extend({
                         dotArray[i][j] = null;
                         tekiArray[i][j] = null;
                         tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         break;
                     case 13:
                         spriteteki2 = cc.Sprite.create(res.tekimannakaaka);
@@ -390,7 +439,11 @@ var gameLayer = cc.Layer.extend({
                             y: i
                         };　　
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
+                        tekiArray[i][j] = null;
                         tekiArray2[i][j] = spriteteki2;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         dotArray[i][j] = null;
                         break;
                     case 14:
@@ -406,7 +459,11 @@ var gameLayer = cc.Layer.extend({
                             y: i
                         };　　
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
+                        tekiArray[i][j] = null;
+                        tekiArray2[i][j] = null;
                         tekiArray3[i][j] = spriteteki3;
+                        tekiArray4[i][j] = null;
+                        tekiArray5[i][j] = null;
                         dotArray[i][j] = null;
                         break;
                     case 15:
@@ -422,7 +479,11 @@ var gameLayer = cc.Layer.extend({
                             y: i
                         };　　
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
+                        tekiArray[i][j] = null;
+                        tekiArray2[i][j] = null;
                         tekiArray4[i][j] = spriteteki4;
+                        tekiArray3[i][j] = null;
+                        tekiArray5[i][j] = null;
                         dotArray[i][j] = null;
                         break;
                     case 16:
@@ -438,6 +499,10 @@ var gameLayer = cc.Layer.extend({
                             y: i
                         };　　
                         cratesArray[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
+                        tekiArray[i][j] = null;
+                        tekiArray2[i][j] = null;
+                        tekiArray3[i][j] = null;
+                        tekiArray4[i][j] = null;
                         tekiArray5[i][j] = spriteteki5;
                         dotArray[i][j] = null;
                     default:
@@ -677,6 +742,7 @@ var gameLayer = cc.Layer.extend({
     },
     removeteki: function(event) {
         aotaositaflag = true;
+        audioEngine.playEffect(res.jump03);
         spriteteki.unschedule(this.workingteki);
         this.removeChild(spriteteki);
     },
@@ -690,7 +756,7 @@ var gameLayer = cc.Layer.extend({
         //spriteteki.setScale(2.3);
         //プレイヤーが右敵が左
         if (playerPosition.x > enemyPosition2.x && tekikabeflag2 == 0) {
-            if (level[enemyPosition2.y][enemyPosition2.x + 1] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition2.y][enemyPosition2.x + 1] == 1 || level[enemyPosition2.y - 1][enemyPosition2.x] == 7 || level[enemyPosition2.y - 1][enemyPosition2.x] == 13 || level[enemyPosition2.y - 1][enemyPosition2.x] == 14 || level[enemyPosition2.y - 1][enemyPosition2.x] == 15 || level[enemyPosition2.y - 1][enemyPosition2.x] == 16) {
                 //プレイヤーの上か下かで回り込む方向決める
                 if (playerPosition.y >= enemyPosition2.y) {
                     tekimove2(0, -1);
@@ -703,7 +769,7 @@ var gameLayer = cc.Layer.extend({
             }
             //プレイヤーが下敵が上
         } else if (playerPosition.y > enemyPosition2.y && tekikabeflag2 == 0) {
-            if (level[enemyPosition2.y + 1][enemyPosition2.x] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition2.y + 1][enemyPosition2.x] == 1 || level[enemyPosition2.y - 1][enemyPosition2.x] == 7 || level[enemyPosition2.y - 1][enemyPosition2.x] == 13 || level[enemyPosition2.y - 1][enemyPosition2.x] == 14 || level[enemyPosition2.y - 1][enemyPosition2.x] == 15 || level[enemyPosition2.y - 1][enemyPosition2.x] == 16) {
                 if (playerPosition.x > enemyPosition2.x) {
                     tekimove2(-1, 0);
                 } else if (playerPosition.x <= enemyPosition2.x) {
@@ -714,7 +780,7 @@ var gameLayer = cc.Layer.extend({
             }
             //プレイヤーが左敵が右
         } else if (playerPosition.x < enemyPosition2.x && tekikabeflag2 == 0) {
-            if (level[enemyPosition2.y][enemyPosition2.x - 1] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition2.y][enemyPosition2.x - 1] == 1 || level[enemyPosition2.y - 1][enemyPosition2.x] == 7 || level[enemyPosition2.y - 1][enemyPosition2.x] == 13 || level[enemyPosition2.y - 1][enemyPosition2.x] == 14 || level[enemyPosition2.y - 1][enemyPosition2.x] == 15 || level[enemyPosition2.y - 1][enemyPosition2.x] == 16) {
                 if (playerPosition.y > enemyPosition2.y) {
                     tekimove2(0, -1);
                 } else if (playerPosition.y <= enemyPosition2.y) {
@@ -761,6 +827,7 @@ var gameLayer = cc.Layer.extend({
     },
     removeteki2: function(event) {
         akataositaflag = true;
+        audioEngine.playEffect(res.jump03);
         spriteteki2.unschedule(this.workingteki2);
         this.removeChild(spriteteki2);
     },
@@ -773,7 +840,7 @@ var gameLayer = cc.Layer.extend({
         //spriteteki.setScale(2.3);
         //プレイヤーが右敵が左
         if (playerPosition.x > enemyPosition3.x && tekikabeflag3 == 0) {
-            if (level[enemyPosition3.y][enemyPosition3.x + 1] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition3.y][enemyPosition3.x + 1] == 1 || level[enemyPosition3.y - 1][enemyPosition3.x] == 7 || level[enemyPosition3.y - 1][enemyPosition3.x] == 13 || level[enemyPosition3.y - 1][enemyPosition3.x] == 14 || level[enemyPosition3.y - 1][enemyPosition3.x] == 15 || level[enemyPosition3.y - 1][enemyPosition3.x] == 16) {
                 //プレイヤーの上か下かで回り込む方向決める
                 if (playerPosition.y >= enemyPosition3.y) {
                     tekimove3(0, -1);
@@ -786,7 +853,7 @@ var gameLayer = cc.Layer.extend({
             }
             //プレイヤーが下敵が上
         } else if (playerPosition.y > enemyPosition3.y && tekikabeflag3 == 0) {
-            if (level[enemyPosition3.y + 1][enemyPosition3.x] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition3.y + 1][enemyPosition3.x] == 1 || level[enemyPosition3.y - 1][enemyPosition3.x] == 7 || level[enemyPosition3.y - 1][enemyPosition3.x] == 13 || level[enemyPosition3.y - 1][enemyPosition3.x] == 14 || level[enemyPosition3.y - 1][enemyPosition3.x] == 15 || level[enemyPosition3.y - 1][enemyPosition3.x] == 16) {
                 if (playerPosition.x > enemyPosition3.x) {
                     tekimove3(-1, 0);
                 } else if (playerPosition.x <= enemyPosition3.x) {
@@ -797,7 +864,7 @@ var gameLayer = cc.Layer.extend({
             }
             //プレイヤーが左敵が右
         } else if (playerPosition.x < enemyPosition3.x && tekikabeflag3 == 0) {
-            if (level[enemyPosition3.y][enemyPosition3.x - 1] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition3.y][enemyPosition3.x - 1] == 1 || level[enemyPosition3.y - 1][enemyPosition3.x] == 7 || level[enemyPosition3.y - 1][enemyPosition3.x] == 13 || level[enemyPosition3.y - 1][enemyPosition3.x] == 14 || level[enemyPosition3.y - 1][enemyPosition3.x] == 15 || level[enemyPosition3.y - 1][enemyPosition3.x] == 16) {
                 if (playerPosition.y > enemyPosition3.y) {
                     tekimove3(0, -1);
                 } else if (playerPosition.y <= enemyPosition3.y) {
@@ -836,6 +903,7 @@ var gameLayer = cc.Layer.extend({
     },
     removeteki3: function(event) {
         kitaositaflag = true;
+        audioEngine.playEffect(res.jump03);
         spriteteki3.unschedule(this.workingteki3);
         this.removeChild(spriteteki3);
     },
@@ -849,7 +917,7 @@ var gameLayer = cc.Layer.extend({
         //spriteteki.setScale(2.3);
         //プレイヤーが右敵が左
         if (playerPosition.x > enemyPosition4.x && tekikabeflag4 == 0) {
-            if (level[enemyPosition4.y][enemyPosition4.x + 1] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition4.y][enemyPosition4.x + 1] == 1 || level[enemyPosition4.y - 1][enemyPosition4.x] == 7 || level[enemyPosition4.y - 1][enemyPosition4.x] == 13 || level[enemyPosition4.y - 1][enemyPosition4.x] == 14 || level[enemyPosition4.y - 1][enemyPosition4.x] == 15 || level[enemyPosition4.y - 1][enemyPosition4.x] == 16) {
                 //プレイヤーの上か下かで回り込む方向決める
                 if (playerPosition.y >= enemyPosition4.y) {
                     tekimove4(0, -1);
@@ -862,7 +930,7 @@ var gameLayer = cc.Layer.extend({
             }
             //プレイヤーが下敵が上
         } else if (playerPosition.y > enemyPosition4.y && tekikabeflag4 == 0) {
-            if (level[enemyPosition4.y + 1][enemyPosition4.x] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition4.y + 1][enemyPosition4.x] == 1 || level[enemyPosition4.y - 1][enemyPosition4.x] == 7 || level[enemyPosition4.y - 1][enemyPosition4.x] == 13 || level[enemyPosition4.y - 1][enemyPosition4.x] == 14 || level[enemyPosition4.y - 1][enemyPosition4.x] == 15 || level[enemyPosition4.y - 1][enemyPosition4.x] == 16) {
                 if (playerPosition.x > enemyPosition4.x) {
                     tekimove4(-1, 0);
                 } else if (playerPosition.x <= enemyPosition4.x) {
@@ -873,7 +941,7 @@ var gameLayer = cc.Layer.extend({
             }
             //プレイヤーが左敵が右
         } else if (playerPosition.x < enemyPosition4.x && tekikabeflag4 == 0) {
-            if (level[enemyPosition4.y][enemyPosition4.x - 1] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition4.y][enemyPosition4.x - 1] == 1 || level[enemyPosition4.y - 1][enemyPosition4.x] == 7 || level[enemyPosition4.y - 1][enemyPosition4.x] == 13 || level[enemyPosition4.y - 1][enemyPosition4.x] == 14 || level[enemyPosition4.y - 1][enemyPosition4.x] == 15 || level[enemyPosition4.y - 1][enemyPosition4.x] == 16) {
                 if (playerPosition.y > enemyPosition4.y) {
                     tekimove4(0, -1);
                 } else if (playerPosition.y <= enemyPosition4.y) {
@@ -912,6 +980,7 @@ var gameLayer = cc.Layer.extend({
     },
     removeteki4: function(event) {
         midoritaositaflag = true;
+        audioEngine.playEffect(res.jump03);
         spriteteki4.unschedule(this.workingteki4);
         this.removeChild(spriteteki4);
     },
@@ -924,7 +993,7 @@ var gameLayer = cc.Layer.extend({
         //spriteteki.setScale(2.3);
         //プレイヤーが右敵が左
         if (playerPosition.x > enemyPosition5.x && tekikabeflag5 == 0) {
-            if (level[enemyPosition5.y][enemyPosition5.x + 1] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition5.y][enemyPosition5.x + 1] == 1 || level[enemyPosition5.y - 1][enemyPosition5.x] == 7 || level[enemyPosition5.y - 1][enemyPosition5.x] == 13 || level[enemyPosition5.y - 1][enemyPosition5.x] == 14 || level[enemyPosition5.y - 1][enemyPosition5.x] == 15 || level[enemyPosition5.y - 1][enemyPosition5.x] == 16) {
                 //プレイヤーの上か下かで回り込む方向決める
                 if (playerPosition.y >= enemyPosition5.y) {
                     tekimove5(0, -1);
@@ -937,7 +1006,7 @@ var gameLayer = cc.Layer.extend({
             }
             //プレイヤーが下敵が上
         } else if (playerPosition.y > enemyPosition5.y && tekikabeflag5 == 0) {
-            if (level[enemyPosition5.y + 1][enemyPosition5.x] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition5.y + 1][enemyPosition5.x] == 1 || level[enemyPosition5.y - 1][enemyPosition5.x] == 7 || level[enemyPosition5.y - 1][enemyPosition5.x] == 13 || level[enemyPosition5.y - 1][enemyPosition5.x] == 14 || level[enemyPosition5.y - 1][enemyPosition5.x] == 15 || level[enemyPosition5.y - 1][enemyPosition5.x] == 16) {
                 if (playerPosition.x > enemyPosition5.x) {
                     tekimove5(-1, 0);
                 } else if (playerPosition.x <= enemyPosition5.x) {
@@ -948,7 +1017,7 @@ var gameLayer = cc.Layer.extend({
             }
             //プレイヤーが左敵が右
         } else if (playerPosition.x < enemyPosition5.x && tekikabeflag5 == 0) {
-            if (level[enemyPosition5.y][enemyPosition5.x - 1] == 1 || level[enemyPosition.y - 1][enemyPosition.x] == 7 || level[enemyPosition.y - 1][enemyPosition.x] == 13 || level[enemyPosition.y - 1][enemyPosition.x] == 14 || level[enemyPosition.y - 1][enemyPosition.x] == 15 || level[enemyPosition.y - 1][enemyPosition.x] == 16) {
+            if (level[enemyPosition5.y][enemyPosition5.x - 1] == 1 || level[enemyPosition5.y - 1][enemyPosition5.x] == 7 || level[enemyPosition5.y - 1][enemyPosition5.x] == 13 || level[enemyPosition5.y - 1][enemyPosition5.x] == 14 || level[enemyPosition5.y - 1][enemyPosition5.x] == 15 || level[enemyPosition5.y - 1][enemyPosition5.x] == 16) {
                 if (playerPosition.y > enemyPosition5.y) {
                     tekimove5(0, -1);
                 } else if (playerPosition.y <= enemyPosition5.y) {
@@ -987,6 +1056,7 @@ var gameLayer = cc.Layer.extend({
     },
     removeteki5: function(event) {
         murasakitaositaflag = true;
+        audioEngine.playEffect(res.jump03);
         spriteteki5.unschedule(this.workingteki5);
         this.removeChild(spriteteki5);
     },
@@ -1146,7 +1216,7 @@ function move(deltaX, deltaY) {
                 level[playerPosition.y][playerPosition.x] += 4;
                 playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
                 if (playerSprite.tekisyoutotu == 1 && aotaositaflag == false) {
-                    audioEngine.playEffect(res.jump03);
+
                     layer0.removeteki(spriteteki);
                     //level[enemyPosition.y][enemyPosition.x] = 0;
 
@@ -1173,7 +1243,7 @@ function move(deltaX, deltaY) {
                 level[playerPosition.y][playerPosition.x] += 4;
                 playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
                 if (playerSprite.tekisyoutotu == 5 && murasakitaositaflag == false) {
-                    audioEngine.playEffect(res.jump03);
+
                     layer0.removeteki5(spriteteki5);
                     //level[enemyPosition.y][enemyPosition.x] = 0;
 
@@ -1199,7 +1269,7 @@ function move(deltaX, deltaY) {
                 level[playerPosition.y][playerPosition.x] += 4;
                 playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
                 if (playerSprite.tekisyoutotu == 4 && midoritaositaflag == false) {
-                    audioEngine.playEffect(res.jump03);
+
                     layer0.removeteki4(spriteteki4);
                     //level[enemyPosition.y][enemyPosition.x] = 0;
 
@@ -1225,7 +1295,7 @@ function move(deltaX, deltaY) {
                 level[playerPosition.y][playerPosition.x] += 4;
                 playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
                 if (playerSprite.tekisyoutotu == 3 && kitaositaflag == false) {
-                    audioEngine.playEffect(res.jump03);
+
                     layer0.removeteki3(spriteteki3);
                     //level[enemyPosition.y][enemyPosition.x] = 0;
 
@@ -1251,7 +1321,7 @@ function move(deltaX, deltaY) {
                 level[playerPosition.y][playerPosition.x] += 4;
                 playerSprite.setPosition(30 + 75 * playerPosition.x, 1140 - 75 * playerPosition.y);
                 if (playerSprite.tekisyoutotu == 2 && akataositaflag == false) {
-                    audioEngine.playEffect(res.jump03);
+
                     layer0.removeteki2(spriteteki2);
                     //level[enemyPosition.y][enemyPosition.x] = 0;
 
@@ -1843,6 +1913,7 @@ function ueniiku() {
 //右
 function miginiiku() {
     move(1, 0);
+
     //tekimove(1, 0);
 }
 //下
