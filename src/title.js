@@ -71,7 +71,7 @@ var ThirdLayer = cc.Layer.extend({
       audioEngine.playEffect(res.powerup02);
 var pause = setTimeout(function() {
         cc.director.runScene(new gameScene1());
-
+dottota = 0;
 
         //bgmの再生をとめる
         if (audioEngine.isMusicPlaying()) {

@@ -3,7 +3,7 @@ var size;
 
 var level;
 var overreset;
-var map;
+
 
  level = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],

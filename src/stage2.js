@@ -3,36 +3,36 @@ var sizestage2;
 
 var levelstage2;
 var overresetstage2;
-var mapstage2;
+
 
 var levelstage2 = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 10, 1, 7, 13, 14, 15, 2, 2, 2, 2, 2, 1],
     [1, 2, 8, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1],
-    [1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1],
+    [1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1],
     [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
     [1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1],
     [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
     [1, 2, 1, 2, 2, 2, 2, 9, 11, 2, 2, 2, 1],
-    [1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1],
+    [1, 2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1],
     [1, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
 overresetstage2 = [
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 10, 1, 7, 13, 14, 15, 2, 2, 2, 2, 2, 1],
-  [1, 2, 8, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1],
-  [1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1],
-  [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
-  [1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1],
-  [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
-  [1, 2, 1, 2, 2, 2, 2, 9, 11, 2, 2, 2, 1],
-  [1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1],
-  [1, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 10, 1, 7, 13, 14, 15, 2, 2, 2, 2, 2, 1],
+    [1, 2, 8, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1],
+    [1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1],
+    [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
+    [1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1],
+    [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
+    [1, 2, 1, 2, 2, 2, 2, 9, 11, 2, 2, 2, 1],
+    [1, 2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1],
+    [1, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
 
@@ -72,7 +72,7 @@ var tekikabeflag3stage2 = 0;
 var tekikabeflag4stage2 = 0;
 var tekikabeflag5stage2 = 0;
 var layer0stage2;
-var dottotastage2 = 0;
+
 var aotaositaflagstage2 = false;
 var akataositaflagstage2 = false;
 var kitaositaflagstage2 = false;
@@ -229,8 +229,8 @@ var gameLayerstage2 = cc.Layer.extend({
             tekiArray5stage2[i] = [];
 
             for (j = 0; j < 15; j++) {
-              var resetstage2 = overresetstage2[i][j];
-              levelstage2[i][j] = resetstage2;
+                var resetstage2 = overresetstage2[i][j];
+                levelstage2[i][j] = resetstage2;
                 switch (levelstage2[i][j]) {
                     case 0:
                         var spriteyukastage2 = cc.Sprite.create(res.yuka);
@@ -301,11 +301,6 @@ var gameLayerstage2 = cc.Layer.extend({
                         playerSpritestage2.schedule(this.working6stage2, 0.5);
                         playerSpritestage2.invulnerabilitystage2 = 0; //無敵モード時間　初期値0
                         this.scheduleUpdate();
-
-
-
-
-
 
                         playerPositionstage2 = {
                             x: j,
@@ -655,13 +650,9 @@ var gameLayerstage2 = cc.Layer.extend({
                 tekimovestage2(0, 1);
             }
             //プレイヤーが左敵が右
-        } else if (playerPositionstage2.x < enemyPositionstage2
-            .x && tekikabeflagstage2 == 0) {
-            if (levelstage2[enemyPositionstage2
-                    .y][enemyPositionstage2
-                    .x - 1
-                ] == 1 || levelstage2[enemyPositionstage2
-                    .y - 1][enemyPosition.x] == 7 || levelstage2[enemyPositionstage2
+        } else if (playerPositionstage2.x < enemyPositionstage2.x && tekikabeflagstage2 == 0) {
+            if (levelstage2[enemyPositionstage2.y][enemyPositionstage2.x - 1] == 1 || levelstage2[enemyPositionstage2
+                    .y - 1][enemyPositionstage2.x] == 7 || levelstage2[enemyPositionstage2
                     .y - 1][enemyPositionstage2
                     .x
                 ] == 13 || levelstage2[enemyPositionstage2
@@ -674,7 +665,7 @@ var gameLayerstage2 = cc.Layer.extend({
                     .y - 1][enemyPositionstage2
                     .x
                 ] == 16) {
-                if (playerPosition.y > enemyPositionstage2.y) {
+                if (playerPositionstage2.y > enemyPositionstage2.y) {
                     tekimovestage2(0, -1);
                 } else if (playerPositionstage2.y <= enemyPositionstage2.y) {
                     tekimovestage2(0, 1);
@@ -1477,11 +1468,7 @@ function movestage2(deltaXstage2, deltaYstage2) {
                     .y + deltaYstage2][playerPositionstage2
                     .x + deltaXstage2
                 ] == 2) {
-                levelstage2
-                    [playerPositionstage2
-                        .y][playerPositionstage2
-                        .x
-                    ] -= 4;
+                levelstage2[playerPositionstage2.y][playerPositionstage2.x] -= 4;
                 playerPositionstage2
                     .x += deltaXstage2;
                 playerPositionstage2
@@ -1540,13 +1527,10 @@ function tekimovestage2(deltaX2stage2, deltaY2stage2) {
         case 13:
 
 
-            levelstage2
-                [enemyPositionstage2.y][enemyPositionstage2.x] -= 7;
+            levelstage2[enemyPositionstage2.y][enemyPositionstage2.x] -= 7;
             enemyPositionstage2.x += deltaX2stage2;
             enemyPositionstage2.y += deltaY2stage2;
-
-            levelstage2
-                [enemyPositionstage2.y][enemyPositionstage2.x] += 7;
+            levelstage2[enemyPositionstage2.y][enemyPositionstage2.x] += 7;
             //ここ
             var nowPosXstage2 = spritetekistage2.getPosition().x;
             var nowPosYstage2 = spritetekistage2.getPosition().y;
@@ -1563,12 +1547,10 @@ function tekimovestage2(deltaX2stage2, deltaY2stage2) {
         case 4:
         case 6:
             if (levelstage2[enemyPositionstage2.y + deltaY2stage2][enemyPositionstage2.x + deltaX2stage2] == 4) {
-                levelstage2
-                    [enemyPositionstage2.y][enemyPositionstage2.x] -= 7;
+                levelstage2[enemyPositionstage2.y][enemyPositionstage2.x] -= 7;
                 enemyPositionstage2.x += deltaX2stage2;
                 enemyPositionstage2.y += deltaY2stage2;
-                levelstage2
-                    [enemyPositionstage2.y][enemyPositionstage2.x] += 7;
+                levelstage2[enemyPositionstage2.y][enemyPositionstage2.x] += 7;
 
                 var nowPosXstage2 = spritetekistage2.getPosition().x;
                 var nowPosYstage2 = spritetekistage2.getPosition().y;

@@ -55,6 +55,7 @@ var ResultLayer = cc.Layer.extend({
                 cc.director.runScene(new gameScene3());
             }
             if (stagesusumu == 3) {
+                //cc.director.runScene(new gameSceneEX());
                 cc.director.runScene(new FirstScene());
                 stagesusumu = 0;
             }

@@ -84,6 +84,9 @@ var res = {
     powerup08: "res/powerup08.mp3",
     damage7: "res/damage7.mp3",
     jump03: "res/jump03.mp3",
+    BOSSBGM: "res/BOSSBGM.mp3",
+    bossmigi: "res/boss右.png",
+    bosshidari: "res/boss左.png",
 
 
 };

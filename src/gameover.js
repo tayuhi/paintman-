@@ -69,7 +69,7 @@ var yonLayer = cc.Layer.extend({
     //  level = reset;
 
         cc.director.runScene(new FirstScene());
-
+dottota = 0;
 
         //bgmの再生をとめる
         if (audioEngine.isMusicPlaying()) {

@@ -3,7 +3,6 @@ var sizestage3;
 
 var levelstage3;
 
-var mapstage3;
 var overresetstage3;
 var levelstage3 = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -73,7 +72,7 @@ var tekikabeflag3stage3 = 0;
 var tekikabeflag4stage3 = 0;
 var tekikabeflag5stage3 = 0;
 var layer0stage3;
-var dottotastage3 = 0;
+
 var aotaositaflagstage3 = false;
 var akataositaflagstage3 = false;
 var kitaositaflagstage3 = false;
@@ -940,7 +939,7 @@ var gameLayerstage3 = cc.Layer.extend({
                     .x - 1
                 ] == 1 || levelstage3[enemyPositionstage3
 
-                    .y - 1][enemyPosition.x] == 7 || levelstage3[enemyPositionstage3
+                    .y - 1][enemyPositionstage3.x] == 7 || levelstage3[enemyPositionstage3
 
                     .y - 1][enemyPositionstage3
 
@@ -961,7 +960,7 @@ var gameLayerstage3 = cc.Layer.extend({
 
                     .x
                 ] == 16) {
-                if (playerPosition.y > enemyPositionstage3
+                if (playerPositionstage3.y > enemyPositionstage3
                     .y) {
                     tekimovestage3
                         (0, -1);
