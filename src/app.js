@@ -108,7 +108,7 @@ var gameScene1 = cc.Scene.extend({
             audioEngine.playMusic(res.gamebgm, true);
         }
         //dotした回数
-        missText = cc.LabelTTF.create("SCORE 0", "PixelMplus10", "32", cc.TEXT_ALIGNMENT_CENTER);
+        missText = cc.LabelTTF.create("SCORE "+ miss, "PixelMplus10", "32", cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(missText);
         missText.setPosition(250, 1250);
         missText.setScale(3.5);
