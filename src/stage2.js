@@ -7,31 +7,31 @@ var overresetstage2;
 
 var levelstage2 = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 10, 1, 7, 13, 14, 15, 2, 2, 2, 2, 2, 1],
-    [1, 2, 8, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1],
-    [1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1],
-    [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
-    [1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1],
-    [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
-    [1, 2, 1, 2, 2, 2, 2, 9, 11, 2, 2, 2, 1],
-    [1, 2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1],
-    [1, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 10, 1, 7, 13, 14, 15, 500, 500, 500, 500, 500, 1],
+    [1, 500, 8, 500, 500, 500, 500, 500, 500, 500, 500, 500, 1],
+    [1, 500, 500, 500, 1, 1, 1, 1, 1, 500, 500, 500, 1],
+    [1, 500, 1, 500, 1, 1, 1, 1, 1, 500, 1, 500, 1],
+    [1, 500, 1, 500, 500, 500, 500, 500, 500, 500, 1, 500, 1],
+    [1, 500, 1, 1, 500, 1, 1, 1, 1, 500, 1, 500, 1],
+    [1, 500, 1, 500, 500, 500, 500, 500, 500, 500, 1, 500, 1],
+    [1, 500, 1, 500, 500, 500, 500, 9, 11, 500, 500, 500, 1],
+    [1, 500, 1, 500, 500, 1, 1, 1, 1, 1, 1, 500, 1],
+    [1, 4, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
 overresetstage2 = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 10, 1, 7, 13, 14, 15, 2, 2, 2, 2, 2, 1],
-    [1, 2, 8, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1],
-    [1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1],
-    [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
-    [1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1],
-    [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
-    [1, 2, 1, 2, 2, 2, 2, 9, 11, 2, 2, 2, 1],
-    [1, 2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1],
-    [1, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+    [1, 10, 1, 7, 13, 14, 15, 500, 500, 500, 500, 500, 1],
+    [1, 500, 8, 500, 500, 500, 500, 500, 500, 500, 500, 500, 1],
+    [1, 500, 500, 500, 1, 1, 1, 1, 1, 500, 500, 500, 1],
+    [1, 500, 1, 500, 1, 1, 1, 1, 1, 500, 1, 500, 1],
+    [1, 500, 1, 500, 500, 500, 500, 500, 500, 500, 1, 500, 1],
+    [1, 500, 1, 1, 500, 1, 1, 1, 1, 500, 1, 500, 1],
+    [1, 500, 1, 500, 500, 500, 500, 500, 500, 500, 1, 500, 1],
+    [1, 500, 1, 500, 500, 500, 500, 9, 11, 500, 500, 500, 1],
+    [1, 500, 1, 500, 500, 1, 1, 1, 1, 1, 1, 500, 1],
+    [1, 4, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
@@ -259,7 +259,7 @@ var gameLayerstage2 = cc.Layer.extend({
                         tekiArray5stage2[i][j] = null;
                         break;
 
-                    case 2:
+                    case 500:
                         spritedotstage2 = cc.Sprite.create(res.dot);
                         spritedotstage2.setPosition(30 + 75 * j, 1140 - 75 * i);
                         spritedotstage2.setScale(0.15);
@@ -328,7 +328,7 @@ var gameLayerstage2 = cc.Layer.extend({
                         tekiArray3stage2[i][j] = null;
                         break;
                     case 7:
-                        spritetekistage2 = cc.Sprite.create(res.tekimannakako);
+                        spritetekistage2 = cc.Sprite.create(res.tekimannakao);
                         spritetekistage2.setPosition(30 + 75 * j, 1140 - 75 * i);
                         spritetekistage2.setScale(0.3);
                         this.addChild(spritetekistage2, 1);
@@ -461,6 +461,7 @@ var gameLayerstage2 = cc.Layer.extend({
                         cratesArraystage2[i][j] = null;　 //playerがいるので、その場所には木箱はないのでnullを代入する
                         tekiArray5stage2[i][j] = spriteteki5stage2;
                         dotArraystage2[i][j] = null;
+
                     default:
                         cratesArraystage2[i][j] = null; //木箱のコード以外の場合は、その場所に木箱がない値としてnullを代入する
                         dotArraystage2[i][j] = null;
@@ -546,6 +547,8 @@ var gameLayerstage2 = cc.Layer.extend({
 
 
     update: function() {
+      //なぜか青い敵がドットか敵をremoveしないと透明なので常にドット消す判定入れてる
+      layer0stage2.removedotstage2(dotArraystage2[playerPositionstage2.y][playerPositionstage2.x]);
         if (playerSpritestage2.invulnerabilitystage2 > 0) {
             playerSpritestage2.invulnerabilitystage2--;
             playerSpritestage2.setOpacity(255 - playerSpritestage2.getOpacity());
@@ -863,6 +866,7 @@ var gameLayerstage2 = cc.Layer.extend({
     },
     //4体目
     workingteki4stage2: function() {
+
         //距離で上下左右回り込むscriptを
         spriteteki4stage2.workingFlagteki4stage2 = (spriteteki4stage2.workingFlagteki4stage2 == true) ? false : true;
         if (spriteteki4stage2.workingFlagteki4stage2) spriteteki4stage2.initWithFile(res.tekimidorimigi);
@@ -1369,10 +1373,7 @@ function movestage2(deltaXstage2, deltaYstage2) {
         case 10:
         case 0:
 
-            if (levelstage2[playerPositionstage2
-                    .y + deltaYstage2][playerPositionstage2
-                    .x + deltaXstage2
-                ] == 12) {
+            if (levelstage2[playerPositionstage2.y + deltaYstage2][playerPositionstage2.x + deltaXstage2] == 12) {
                 playerSpritestage2.iroflagstage2 = true;
                 playerSpritestage2.iroflagakastage2 = false;
                 playerSpritestage2.iroflagaostage2 = false;
@@ -1382,10 +1383,7 @@ function movestage2(deltaXstage2, deltaYstage2) {
                 playerSpritestage2.tekisyoutotustage2 = 5;
                 audioEngine.playEffect(res.powerup08);
             }
-            if (levelstage2[playerPositionstage2
-                    .y + deltaYstage2][playerPositionstage2
-                    .x + deltaXstage2
-                ] == 11) {
+            if (levelstage2[playerPositionstage2.y + deltaYstage2][playerPositionstage2.x + deltaXstage2] == 11) {
                 playerSpritestage2.iroflagstage2 = true;
                 playerSpritestage2.iroflagakastage2 = false;
                 playerSpritestage2.iroflagaostage2 = false;
@@ -1395,10 +1393,7 @@ function movestage2(deltaXstage2, deltaYstage2) {
                 playerSpritestage2.tekisyoutotustage2 = 4;
                 audioEngine.playEffect(res.powerup08);
             }
-            if (levelstage2[playerPositionstage2
-                    .y + deltaYstage2][playerPositionstage2
-                    .x + deltaXstage2
-                ] == 10) {
+            if (levelstage2[playerPositionstage2.y + deltaYstage2][playerPositionstage2.x + deltaXstage2] == 10) {
                 playerSpritestage2.iroflagstage2 = true;
                 playerSpritestage2.iroflagakastage2 = false;
                 playerSpritestage2.iroflagaostage2 = false;
@@ -1408,10 +1403,7 @@ function movestage2(deltaXstage2, deltaYstage2) {
                 playerSpritestage2.tekisyoutotustage2 = 3;
                 audioEngine.playEffect(res.powerup08);
             }
-            if (levelstage2[playerPositionstage2
-                    .y + deltaYstage2][playerPositionstage2
-                    .x + deltaXstage2
-                ] == 9) {
+            if (levelstage2[playerPositionstage2.y + deltaYstage2][playerPositionstage2.x + deltaXstage2] == 9) {
                 playerSpritestage2.iroflagstage2 = true;
                 playerSpritestage2.iroflagakastage2 = true;
                 playerSpritestage2.iroflagaostage2 = false;
@@ -1437,55 +1429,33 @@ function movestage2(deltaXstage2, deltaYstage2) {
 
 
 
-            levelstage2
-                [playerPositionstage2
-                    .y][playerPositionstage2
-                    .x
-                ] -= 4;
-            playerPositionstage2
-                .x += deltaXstage2;
-            playerPositionstage2
-                .y += deltaYstage2;
+            levelstage2[playerPositionstage2.y][playerPositionstage2.x] -= 4;
+            playerPositionstage2.x += deltaXstage2;
+            playerPositionstage2.y += deltaYstage2;
 
-            levelstage2
-                [playerPositionstage2
-                    .y][playerPositionstage2
-                    .x
-                ] += 4;
+            levelstage2[playerPositionstage2.y][playerPositionstage2.x] += 4;
 
 
-            playerSpritestage2.setPosition(30 + 75 * playerPositionstage2
-                .x, 1140 - 75 * playerPositionstage2
-                .y);
+            playerSpritestage2.setPosition(30 + 75 * playerPositionstage2.x, 1140 - 75 * playerPositionstage2.y);
 
             break;
         case 3:
         case 5:
 
             break;
-        case 2:
-            if (levelstage2[playerPositionstage2
-                    .y + deltaYstage2][playerPositionstage2
-                    .x + deltaXstage2
-                ] == 2) {
+        case 500:
+            if (levelstage2[playerPositionstage2.y + deltaYstage2][playerPositionstage2.x + deltaXstage2] == 500) {
                 levelstage2[playerPositionstage2.y][playerPositionstage2.x] -= 4;
-                playerPositionstage2
-                    .x += deltaXstage2;
-                playerPositionstage2
-                    .y += deltaYstage2;
+                playerPositionstage2.x += deltaXstage2;
+                playerPositionstage2.y += deltaYstage2;
 
-                levelstage2
-                    [playerPositionstage2
-                        .y][playerPositionstage2
-                        .x
-                    ] += 4;
-                playerSpritestage2.setPosition(30 + 75 * playerPositionstage2
-                    .x, 1140 - 75 * playerPositionstage2
-                    .y);
+                levelstage2[playerPositionstage2.y][playerPositionstage2.x] += 4;
+                playerSpritestage2.setPosition(30 + 75 * playerPositionstage2.x, 1140 - 75 * playerPositionstage2.y);
 
 
 
                 //layer0stage2.removedotstage2(spritedotstage2);
+                //update関数にremovedot入れてるからいらないかもしれない
                 layer0stage2.removedotstage2(dotArraystage2[playerPositionstage2.y][playerPositionstage2.x]);
                 levelstage2[playerPositionstage2.y][playerPositionstage2.x] = 4;
                 miss++;
@@ -1521,7 +1491,7 @@ function tekimovestage2(deltaX2stage2, deltaY2stage2) {
         case 8:
         case 9:
         case 10:
-        case 2:
+        case 500:
         case 0:
         case 7:
         case 13:
@@ -1592,24 +1562,22 @@ function tekimove2stage2(deltaX3stage2, deltaY3stage2) {
         case 8:
         case 9:
         case 10:
-        case 2:
+        case 500:
         case 0:
         case 7:
         case 13:
 
 
-            levelstage2
-                [enemyPosition2stage2.y][enemyPosition2stage2.x] -= 13;
+            levelstage2[enemyPosition2stage2.y][enemyPosition2stage2.x] -= 13;
             enemyPosition2stage2.x += deltaX3stage2;
             enemyPosition2stage2.y += deltaY3stage2;
 
-            levelstage2
-                [enemyPosition2stage2.y][enemyPosition2stage2.x] += 13;
+            levelstage2[enemyPosition2stage2.y][enemyPosition2stage2.x] += 13;
             //ここ
             var nowPosX2stage2 = spriteteki2stage2.getPosition().x;
             var nowPosY2stage2 = spriteteki2stage2.getPosition().y;
 
-            var newPosX2stage2 = 30 + 75 * enemyPosition2stage2.x;
+            var newPosX2stage2 = 30 + 75 *   enemyPosition2stage2.x;
             var newPosY2stage2 = 1140 - 75 * enemyPosition2stage2.y;
 
             spriteteki2stage2.runAction(cc.MoveTo.create(0.5, cc.p(newPosX2stage2, newPosY2stage2)));
@@ -1621,12 +1589,10 @@ function tekimove2stage2(deltaX3stage2, deltaY3stage2) {
         case 4:
         case 6:
             if (levelstage2[enemyPosition2stage2.y + deltaY3stage2][enemyPosition2stage2.x + deltaX3stage2] == 4) {
-                levelstage2
-                    [enemyPosition2stage2.y][enemyPosition2stage2.x] -= 13;
+                levelstage2[enemyPosition2stage2.y][enemyPosition2stage2.x] -= 13;
                 enemyPosition2stage2.x += deltaX3stage2;
                 enemyPosition2stage2.y += deltaY3stage2;
-                levelstage2
-                    [enemyPosition2stage2.y][enemyPosition2stage2.x] += 13;
+                levelstage2[enemyPosition2stage2.y][enemyPosition2stage2.x] += 13;
 
                 var nowPosX2stage2 = spriteteki2stage2.getPosition().x;
                 var nowPosY2stage2 = spriteteki2stage2.getPosition().y;
@@ -1669,19 +1635,17 @@ function tekimove3stage2(deltaX4stage2, deltaY4stage2) {
         case 8:
         case 9:
         case 10:
-        case 2:
+        case 500:
         case 0:
         case 7:
         case 13:
 
 
-            levelstage2
-                [enemyPosition3stage2.y][enemyPosition3stage2.x] -= 14;
+            levelstage2[enemyPosition3stage2.y][enemyPosition3stage2.x] -= 14;
             enemyPosition3stage2.x += deltaX4stage2;
             enemyPosition3stage2.y += deltaY4stage2;
 
-            levelstage2
-                [enemyPosition3stage2.y][enemyPosition3stage2.x] += 14;
+            levelstage2[enemyPosition3stage2.y][enemyPosition3stage2.x] += 14;
             //ここ
             var nowPosX3stage2 = spriteteki3stage2.getPosition().x;
             var nowPosY3stage2 = spriteteki3stage2.getPosition().y;
@@ -1698,12 +1662,10 @@ function tekimove3stage2(deltaX4stage2, deltaY4stage2) {
         case 4:
         case 6:
             if (levelstage2[enemyPosition3stage2.y + deltaY4stage2][enemyPosition3stage2.x + deltaX4stage2] == 4) {
-                levelstage2
-                    [enemyPosition3stage2.y][enemyPosition3stage2.x] -= 14;
+                levelstage2[enemyPosition3stage2.y][enemyPosition3stage2.x] -= 14;
                 enemyPosition3stage2.x += deltaX4stage2;
                 enemyPosition3stage2.y += deltaY4stage2;
-                levelstage2
-                    [enemyPosition3stage2.y][enemyPosition3stage2.x] += 14;
+                levelstage2[enemyPosition3stage2.y][enemyPosition3stage2.x] += 14;
 
                 var nowPosX3stage2 = spriteteki3stage2.getPosition().x;
                 var nowPosY3stage2 = spriteteki3stage2.getPosition().y;
@@ -1736,10 +1698,7 @@ function tekimove3stage2(deltaX4stage2, deltaY4stage2) {
 function tekimove4stage2(deltaX5stage2, deltaY5stage2) {
 
 
-    switch (levelstage2[enemyPosition4stage2
-        .y + deltaY5stage2][enemyPosition4stage2
-        .x + deltaX5stage2
-    ]) {
+    switch (levelstage2[enemyPosition4stage2.y + deltaY5stage2][enemyPosition4stage2.x + deltaX5stage2]) {
         case 16:
         case 15:
         case 14:
@@ -1748,7 +1707,7 @@ function tekimove4stage2(deltaX5stage2, deltaY5stage2) {
         case 8:
         case 9:
         case 10:
-        case 2:
+        case 500:
         case 0:
         case 7:
         case 13:
@@ -1846,7 +1805,7 @@ function tekimove5stage2(deltaX6stage2, deltaY6stage2) {
         case 8:
         case 9:
         case 10:
-        case 2:
+        case 500:
         case 0:
         case 7:
         case 13:

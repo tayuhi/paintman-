@@ -6,32 +6,32 @@ var levelstage3;
 var overresetstage3;
 var levelstage3 = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 8, 2, 7, 13, 2, 2, 2, 2, 2, 2, 16, 1],
-    [1, 2, 12, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 15, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 11, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 10, 1],
-    [1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1],
-    [1, 2, 9, 14, 2, 2, 2, 2, 2, 2, 1, 2, 1],
-    [1, 2, 1, 2, 2, 2, 2, 10, 12, 2, 2, 2, 1],
-    [1, 2, 1, 2, 1, 1, 1, 11, 9, 1, 1, 2, 1],
-    [1, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 8, 1],
+    [1, 8, 500, 7, 13, 500, 500, 500, 500, 500, 16, 500, 1],
+    [1, 500, 12, 500, 500, 500, 500, 500, 500, 500, 500, 500, 1],
+    [1, 15, 500, 500, 1, 1, 1, 1, 1, 500, 500, 500, 1],
+    [1, 500, 500, 500, 500, 500, 500, 11, 500, 500, 500, 500, 1],
+    [1, 500, 500, 500, 500, 500, 500, 500, 500, 500, 1, 10, 1],
+    [1, 500, 1, 1, 500, 1, 1, 1, 1, 500, 1, 500, 1],
+    [1, 500, 9, 14, 500, 500, 500, 500, 500, 500, 1, 500, 1],
+    [1, 500, 1, 500, 500, 500, 500, 10, 12, 500, 500, 500, 1],
+    [1, 500, 1, 500, 1, 1, 1, 11, 9, 1, 1, 500, 1],
+    [1, 4, 500, 500, 500, 500, 500, 500, 500, 500, 500, 8, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
 overresetstage3 = [
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 8, 2, 7, 13, 2, 2, 2, 2, 2, 2, 16, 1],
-  [1, 2, 12, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-  [1, 15, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 2, 11, 2, 2, 2, 2, 1],
-  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 10, 1],
-  [1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1],
-  [1, 2, 9, 14, 2, 2, 2, 2, 2, 2, 1, 2, 1],
-  [1, 2, 1, 2, 2, 2, 2, 10, 12, 2, 2, 2, 1],
-  [1, 2, 1, 2, 1, 1, 1, 11, 9, 1, 1, 2, 1],
-  [1, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 8, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 8, 500, 7, 13, 500, 500, 500, 500, 500, 16, 500, 1],
+    [1, 500, 12, 500, 500, 500, 500, 500, 500, 500, 500, 500, 1],
+    [1, 15, 500, 500, 1, 1, 1, 1, 1, 500, 500, 500, 1],
+    [1, 500, 500, 500, 500, 500, 500, 11, 500, 500, 500, 500, 1],
+    [1, 500, 500, 500, 500, 500, 500, 500, 500, 500, 1, 10, 1],
+    [1, 500, 1, 1, 500, 1, 1, 1, 1, 500, 1, 500, 1],
+    [1, 500, 9, 14, 500, 500, 500, 500, 500, 500, 1, 500, 1],
+    [1, 500, 1, 500, 500, 500, 500, 10, 12, 500, 500, 500, 1],
+    [1, 500, 1, 500, 1, 1, 1, 11, 9, 1, 1, 500, 1],
+    [1, 4, 500, 500, 500, 500, 500, 500, 500, 500, 500, 8, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
 
@@ -292,7 +292,7 @@ var gameLayerstage3 = cc.Layer.extend({
                             [i][j] = null;
                         break;
 
-                    case 2:
+                    case 500:
                         spritedotstage3
                             = cc.Sprite.create(res.dot);
                         spritedotstage3
@@ -696,6 +696,7 @@ var gameLayerstage3 = cc.Layer.extend({
 
 
     update: function() {
+      layer0stage3.removedotstage3(dotArraystage3[playerPositionstage3.y][playerPositionstage3.x]);
         if (playerSpritestage3
             .invulnerabilitystage3 >
             0) {
@@ -2544,7 +2545,7 @@ function movestage3(deltaXstage3, deltaYstage3) {
         case 5:
 
             break;
-        case 2:
+        case 500:
             if (levelstage3[playerPositionstage3
 
                     .y + deltaYstage3
@@ -2552,7 +2553,7 @@ function movestage3(deltaXstage3, deltaYstage3) {
 
                     .x + deltaXstage3
 
-                ] == 2) {
+                ] == 500) {
                 levelstage3
 
                     [playerPositionstage3
@@ -2587,11 +2588,7 @@ function movestage3(deltaXstage3, deltaYstage3) {
 
                 //layer0stage3.removedotstage3
                 (spritedotstage3);
-                layer0stage3
-                    .removedotstage3(dotArraystage3[playerPositionstage3
-                        .y][playerPositionstage3
-                        .x
-                    ]);
+                layer0stage3.removedotstage3(dotArraystage3[playerPositionstage3.y][playerPositionstage3.x]);
                 levelstage3
                     [playerPositionstage3
                         .y][playerPositionstage3
@@ -2634,7 +2631,7 @@ function tekimovestage3(deltaX2stage3, deltaY2stage3) {
         case 8:
         case 9:
         case 10:
-        case 2:
+        case 500:
         case 0:
         case 7:
         case 13:
@@ -2755,7 +2752,7 @@ function tekimove2stage3(deltaX3stage3, deltaY3stage3) {
         case 8:
         case 9:
         case 10:
-        case 2:
+        case 500:
         case 0:
         case 7:
         case 13:
@@ -2876,7 +2873,7 @@ function tekimove3stage3(deltaX4stage3, deltaY4stage3) {
         case 8:
         case 9:
         case 10:
-        case 2:
+        case 500:
         case 0:
         case 7:
         case 13:
@@ -2999,7 +2996,7 @@ function tekimove4stage3(deltaX5stage3, deltaY5stage3) {
         case 8:
         case 9:
         case 10:
-        case 2:
+        case 500:
         case 0:
         case 7:
         case 13:
@@ -3137,7 +3134,7 @@ function tekimove5stage3(deltaX6stage3, deltaY6stage3) {
         case 8:
         case 9:
         case 10:
-        case 2:
+        case 500:
         case 0:
         case 7:
         case 13:
